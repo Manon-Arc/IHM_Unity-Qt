@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+service MyService {
+    rpc MyMethod(MyRequest) returns (MyResponse);
+}
+
+message MyRequest {
+    // Définir les champs nécessaires
+}
+
+message MyResponse {
+    // Définir les champs nécessaires
+}
