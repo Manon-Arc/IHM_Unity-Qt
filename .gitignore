@@ -76,4 +76,5 @@ CMakeLists.txt.user*
 .idea/
 .vscode/
 
+cmake-build-debug/
 
