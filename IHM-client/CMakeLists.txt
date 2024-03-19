@@ -25,7 +25,6 @@ set(PROJECT_SOURCES
         mainwindow.ui
         ${TS_FILES}
         com.pb.cc
-        com.pb.h
 )
 
 include_directories(absl/ google/)
