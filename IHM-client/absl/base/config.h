@@ -88,8 +88,8 @@
 #include <TargetConditionals.h>
 #endif
 
-#include "absl/base/options.h"
-#include "absl/base/policy_checks.h"
+#include "../../absl/base/options.h"
+#include "../../absl/base/policy_checks.h"
 
 // Abseil long-term support (LTS) releases will define
 // `ABSL_LTS_RELEASE_VERSION` to the integer representing the date string of the

@@ -105,13 +105,13 @@
 #endif
 
 
-#include "google/protobuf/stubs/common.h"
-#include "absl/base/attributes.h"
-#include "absl/log/absl_check.h"
-#include "absl/numeric/bits.h"
-#include "absl/strings/cord.h"
-#include "absl/strings/string_view.h"
-#include "google/protobuf/port.h"
+#include "../../../google/protobuf/stubs/common.h"
+#include "../../../absl/base/attributes.h"
+#include "../../../absl/log/absl_check.h"
+#include "../../../absl/numeric/bits.h"
+#include "../../../absl/strings/cord.h"
+#include "../../../absl/strings/string_view.h"
+#include "../../../google/protobuf/port.h"
 
 
 // Must be included last.

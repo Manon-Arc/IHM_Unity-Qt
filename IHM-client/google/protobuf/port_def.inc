@@ -30,8 +30,8 @@
 #error "port_def.inc included multiple times"
 #endif
 #define PROTOBUF_PORT_
-#include "absl/base/attributes.h"
-#include "absl/base/config.h"
+#include "../../absl/base/attributes.h"
+#include "../../absl/base/config.h"
 
 // The definitions in this file are intended to be portable across Clang,
 // GCC, and MSVC. Function-like macros are usable without an #ifdef guard.
