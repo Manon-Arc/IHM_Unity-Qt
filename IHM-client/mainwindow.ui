@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
+    <width>1118</width>
     <height>1080</height>
    </rect>
   </property>
@@ -17,17 +17,33 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>100</y>
+      <x>310</x>
+      <y>80</y>
       <width>500</width>
       <height>100</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>IHM</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton">
+    <property name="geometry">
+     <rect>
+      <x>90</x>
+      <y>350</y>
+      <width>83</width>
+      <height>29</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>PushButton</string>
+    </property>
+    <property name="default">
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
@@ -36,8 +52,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1920</width>
-     <height>22</height>
+     <width>1118</width>
+     <height>25</height>
     </rect>
    </property>
   </widget>
