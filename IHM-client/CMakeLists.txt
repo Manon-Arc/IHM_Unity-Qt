@@ -9,9 +9,12 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_PREFIX_PATH "C:/Qt/6.6.2/mingw_64")
+#set(CMAKE_PREFIX_PATH "C:/Users/Ahlik/.vcpkg-clion/vcpkg/packages/grpc_x64-windows")
+#set(CMAKE_PREFIX_PATH "C:/Users/Ahlik/.vcpkg-clion/vcpkg/packages/upb_x64-windows")
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
+
 
 set(TS_FILES IHM_en_US.ts)
 
@@ -21,7 +24,11 @@ set(PROJECT_SOURCES
         mainwindow.h
         mainwindow.ui
         ${TS_FILES}
+        com.pb.cc
+        com.pb.h
 )
+
+include_directories(absl/ google/)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(IHM
