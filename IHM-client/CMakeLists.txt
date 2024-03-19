@@ -25,9 +25,23 @@ set(PROJECT_SOURCES
         mainwindow.ui
         ${TS_FILES}
         com.pb.cc
+        com.pb.h
+        com.pb.cc
+        com.grpc.pb.cc
+        com.grpc.pb.h
+        server.cpp
 )
 
+set(gRPC_DIR /home/ahliko/grpc/cmake/build/)
+l
+
 include_directories(absl/ google/)
+
+find_package(Protobuf REQUIRED)
+find_package(gRPC REQUIRED)
+
+add_executable(your_executable your_code.cpp)
+target_link_libraries(your_executable gRPC::grpc++ protobuf::libprotobuf)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(IHM
