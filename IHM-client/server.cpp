@@ -6,15 +6,15 @@
 #include <memory>
 #include <string>
 #include <grpcpp/grpcpp.h>
-#include "example.grpc.pb.h"
+#include "com.grpc.pb.h"
 
 using grpc::Server;
 using grpc::ServerBuilder;
 using grpc::ServerContext;
 using grpc::Status;
-using example::HelloRequest;
-using example::HelloResponse;
-using example::Greeter;
+using com::HelloRequest;
+using com::HelloResponse;
+using com::Greeter;
 
 class GreeterServiceImpl final : public Greeter::Service {
     Status SayHello(ServerContext* context, const HelloRequest* request, HelloResponse* response) override {
