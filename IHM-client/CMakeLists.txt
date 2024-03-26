@@ -24,11 +24,21 @@ set(PROJECT_SOURCES
         mainwindow.h
         mainwindow.ui
         ${TS_FILES}
+        server.cpp
+        com.grpc.pb.cc
+        com.grpc.pb.h
         com.pb.cc
         com.pb.h
+        server.cpp
 )
 
-include_directories(absl/ google/)
+#set(gRPC_DIR /home/ahliko/grpc/cmake/build/)
+
+
+#include_directories(absl/ google/)
+
+find_package(Protobuf REQUIRED)
+find_package(gRPC REQUIRED)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(IHM
