@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+service MovementService {
+    rpc Move(MovementRequest) returns (MovementResponse);
+}
+
+message MovementRequest {
+    string direction = 1;
+    int32 distance = 2;
+}
+
+message MovementResponse {
+    string message = 1;
+}

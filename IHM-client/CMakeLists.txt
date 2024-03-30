@@ -22,10 +22,12 @@ set(PROJECT_SOURCES
         mainwindow.h
         mainwindow.ui
         ${TS_FILES}
-        com.grpc.pb.cc
-        com.grpc.pb.h
-        com.pb.cc
-        com.pb.h
+        client.cpp
+        client.h
+        movements.grpc.pb.h
+        movements.grpc.pb.cc
+        movements.pb.h
+        movements.pb.cc
 )
 
 
