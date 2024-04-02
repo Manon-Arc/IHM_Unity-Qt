@@ -15,7 +15,7 @@ using ::MovementService;
 
 class MovementClient {
 public:
-    MovementClient(std::shared_ptr<Channel> channel);
+    explicit MovementClient(std::shared_ptr<Channel> channel);
 
     std::string Move(const std::string& direction, int distance);
 

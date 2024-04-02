@@ -6,20 +6,33 @@
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 QT_END_NAMESPACE
 
-class MainWindow : public QMainWindow
-{
-    Q_OBJECT
+class MainWindow : public QMainWindow {
+Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    explicit MainWindow(QWidget *parent = nullptr);
+
+    ~MainWindow() override;
+
+public slots:
+
+    void moveUp();
+
+    void moveDown();
+
+    void moveLeft();
+
+    void moveRight();
+
+    void jump();
 
 private:
     Ui::MainWindow *ui;
     MovementClient *m_grpcClient = nullptr;
 };
+
 #endif // MAINWINDOW_H
