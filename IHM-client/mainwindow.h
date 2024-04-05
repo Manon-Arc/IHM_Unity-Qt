@@ -18,21 +18,8 @@ public:
 
     ~MainWindow() override;
 
-public slots:
-
-    void moveUp();
-
-    void moveDown();
-
-    void moveLeft();
-
-    void moveRight();
-
-    void jump();
-
 private:
     Ui::MainWindow *ui;
-    MovementClient *m_grpcClient = nullptr;
 };
 
 #endif // MAINWINDOW_H
