@@ -1,25 +1,110 @@
-//
-// Created by ahliko on 30/03/24.
-//
-
 #include "client.h"
 
-MovementClient::MovementClient(std::shared_ptr<Channel> channel)
-        : stub_(MovementService::NewStub(channel)) {}
+GrpcServiceClient::GrpcServiceClient(const std::shared_ptr<Channel>& channel)
+        : stub_(GrpcService::NewStub(channel)) {}
 
-std::string MovementClient::Move(const std::string &direction, int distance) {
-    MovementRequest request;
-    request.set_direction(direction);
-    request.set_distance(distance);
-    MovementResponse response;
+std::string GrpcServiceClient::MoveTrans(const std::string& dir, int distance) {
+    MoveTransRequest request;
+    MoveTransResponse response;
     ClientContext context;
 
-    Status status = stub_->Move(&context, request, &response);
+    request.set_dir(dir);
+    request.set_distance(distance);
+
+    Status status = stub_->MoveTrans(&context, request, &response);
 
     if (status.ok()) {
         return response.message();
     } else {
-        std::cout << "RPC failed: " << status.error_message() << std::endl;
+        std::cerr << "RPC failed: " << status.error_code() << ": " << status.error_message() << std::endl;
+        return "RPC failed";
+    }
+}
+
+std::string GrpcServiceClient::MoveRota(const std::string& dir, int angle) {
+    MoveRotaRequest request;
+    MoveRotaResponse response;
+    ClientContext context;
+
+    request.set_dir(dir);
+    request.set_angle(angle);
+
+    Status status = stub_->MoveRota(&context, request, &response);
+
+    if (status.ok()) {
+        return response.message();
+    } else {
+        std::cerr << "RPC failed: " << status.error_code() << ": " << status.error_message() << std::endl;
+        return "RPC failed";
+    }
+}
+
+std::string GrpcServiceClient::InstanceObject(const std::string& object) {
+    InstanceObjectRequest request;
+    InstanceObjectResponse response;
+    ClientContext context;
+
+    request.set_object(object);
+
+    Status status = stub_->InstanceObject(&context, request, &response);
+
+    if (status.ok()) {
+        return response.message();
+    } else {
+        std::cerr << "RPC failed: " << status.error_code() << ": " << status.error_message() << std::endl;
+        return "RPC failed";
+    }
+}
+
+std::string GrpcServiceClient::TongsManageMove(const std::string& dir, int distance) {
+    TongsManageMoveRequest request;
+    TongsManageMoveResponse response;
+    ClientContext context;
+
+    request.set_dir(dir);
+    request.set_distance(distance);
+
+    Status status = stub_->TongsManageMove(&context, request, &response);
+
+    if (status.ok()) {
+        return response.message();
+    } else {
+        std::cerr << "RPC failed: " << status.error_code() << ": " << status.error_message() << std::endl;
+        return "RPC failed";
+    }
+}
+
+std::string GrpcServiceClient::TongsManageOpening(const std::string& move) {
+    TongsManageOpeningRequest request;
+    TongsManageOpeningResponse response;
+    ClientContext context;
+
+    request.set_move(move);
+
+    Status status = stub_->TongsManageOpening(&context, request, &response);
+
+    if (status.ok()) {
+        return response.message();
+    } else {
+        std::cerr << "RPC failed: " << status.error_code() << ": " << status.error_message() << std::endl;
+        return "RPC failed";
+    }
+}
+
+std::string GrpcServiceClient::MoveCam(const std::string& dir, int distance) {
+    MoveCamRequest request;
+    MoveCamResponse response;
+    ClientContext context;
+
+    request.set_dir(dir);
+    request.set_distance(distance);
+
+    Status status = stub_->MoveCam(&context, request, &response);
+
+    if (status.ok()) {
+        return response.message();
+    } else {
+        std::cerr << "RPC failed: " << status.error_code() << ": " << status.error_message() << std::endl;
         return "RPC failed";
     }
 }

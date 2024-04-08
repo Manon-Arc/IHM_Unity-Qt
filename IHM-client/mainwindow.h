@@ -28,11 +28,9 @@ public slots:
 
     void moveRight();
 
-    void jump();
-
 private:
     Ui::MainWindow *ui;
-    MovementClient *m_grpcClient = nullptr;
+    GrpcServiceClient *m_grpcClient = nullptr;
 };
 
 #endif // MAINWINDOW_H
