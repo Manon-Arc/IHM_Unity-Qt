@@ -230,6 +230,19 @@
      <string>Cylindre</string>
     </property>
    </widget>
+   <widget class="QLabel" name="SliderValue">
+    <property name="geometry">
+     <rect>
+      <x>970</x>
+      <y>190</y>
+      <width>67</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>0</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
