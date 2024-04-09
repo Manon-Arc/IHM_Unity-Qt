@@ -36,8 +36,8 @@ message InstanceObjectResponse {
 }
 
 message TongsManageMoveRequest {
-    string dir = 1;
-    int32 distance = 2;
+    int32 joinId = 1;
+    bool dir = 2;
 }
 
 message TongsManageMoveResponse {
@@ -45,7 +45,7 @@ message TongsManageMoveResponse {
 }
 
 message TongsManageOpeningRequest {
-    string move = 1;
+    bool move = 1;
 }
 
 message TongsManageOpeningResponse {
@@ -53,7 +53,6 @@ message TongsManageOpeningResponse {
 }
 
 message MoveCamRequest {
-    string dir = 1;
     int32 distance = 2;
 }
 

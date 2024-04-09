@@ -44,9 +44,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr TongsManageOpeningRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : move_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
+      : move_{false},
         _cached_size_{0} {}
 
 template <typename>
@@ -86,10 +84,8 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr TongsManageMoveRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : dir_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        distance_{0},
+      : joinid_{0},
+        dir_{false},
         _cached_size_{0} {}
 
 template <typename>
@@ -215,10 +211,7 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr MoveCamRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : dir_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        distance_{0},
+      : distance_{0},
         _cached_size_{0} {}
 
 template <typename>
@@ -347,8 +340,8 @@ const ::uint32_t TableStruct_com_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
+    PROTOBUF_FIELD_OFFSET(::TongsManageMoveRequest, _impl_.joinid_),
     PROTOBUF_FIELD_OFFSET(::TongsManageMoveRequest, _impl_.dir_),
-    PROTOBUF_FIELD_OFFSET(::TongsManageMoveRequest, _impl_.distance_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::TongsManageMoveResponse, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -384,7 +377,6 @@ const ::uint32_t TableStruct_com_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::MoveCamRequest, _impl_.dir_),
     PROTOBUF_FIELD_OFFSET(::MoveCamRequest, _impl_.distance_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::MoveCamResponse, _internal_metadata_),
@@ -410,7 +402,7 @@ static const ::_pbi::MigrationSchema
         {75, -1, -1, sizeof(::TongsManageOpeningRequest)},
         {84, -1, -1, sizeof(::TongsManageOpeningResponse)},
         {93, -1, -1, sizeof(::MoveCamRequest)},
-        {103, -1, -1, sizeof(::MoveCamResponse)},
+        {102, -1, -1, sizeof(::MoveCamResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
@@ -434,30 +426,29 @@ const char descriptor_table_protodef_com_2eproto[] PROTOBUF_SECTION_VARIABLE(pro
     "\013\n\003dir\030\001 \001(\t\022\r\n\005angle\030\002 \001(\005\"#\n\020MoveRotaR"
     "esponse\022\017\n\007message\030\001 \001(\t\"\'\n\025InstanceObje"
     "ctRequest\022\016\n\006object\030\001 \001(\t\")\n\026InstanceObj"
-    "ectResponse\022\017\n\007message\030\001 \001(\t\"7\n\026TongsMan"
-    "ageMoveRequest\022\013\n\003dir\030\001 \001(\t\022\020\n\010distance\030"
-    "\002 \001(\005\"*\n\027TongsManageMoveResponse\022\017\n\007mess"
-    "age\030\001 \001(\t\")\n\031TongsManageOpeningRequest\022\014"
-    "\n\004move\030\001 \001(\t\"-\n\032TongsManageOpeningRespon"
-    "se\022\017\n\007message\030\001 \001(\t\"/\n\016MoveCamRequest\022\013\n"
-    "\003dir\030\001 \001(\t\022\020\n\010distance\030\002 \001(\005\"\"\n\017MoveCamR"
-    "esponse\022\017\n\007message\030\001 \001(\t2\370\002\n\013GrpcService"
-    "\0222\n\tMoveTrans\022\021.MoveTransRequest\032\022.MoveT"
-    "ransResponse\022/\n\010MoveRota\022\020.MoveRotaReque"
-    "st\032\021.MoveRotaResponse\022A\n\016InstanceObject\022"
-    "\026.InstanceObjectRequest\032\027.InstanceObject"
-    "Response\022D\n\017TongsManageMove\022\027.TongsManag"
-    "eMoveRequest\032\030.TongsManageMoveResponse\022M"
-    "\n\022TongsManageOpening\022\032.TongsManageOpenin"
-    "gRequest\032\033.TongsManageOpeningResponse\022,\n"
-    "\007MoveCam\022\017.MoveCamRequest\032\020.MoveCamRespo"
-    "nseb\006proto3"
+    "ectResponse\022\017\n\007message\030\001 \001(\t\"5\n\026TongsMan"
+    "ageMoveRequest\022\016\n\006joinId\030\001 \001(\005\022\013\n\003dir\030\002 "
+    "\001(\010\"*\n\027TongsManageMoveResponse\022\017\n\007messag"
+    "e\030\001 \001(\t\")\n\031TongsManageOpeningRequest\022\014\n\004"
+    "move\030\001 \001(\010\"-\n\032TongsManageOpeningResponse"
+    "\022\017\n\007message\030\001 \001(\t\"\"\n\016MoveCamRequest\022\020\n\010d"
+    "istance\030\002 \001(\005\"\"\n\017MoveCamResponse\022\017\n\007mess"
+    "age\030\001 \001(\t2\370\002\n\013GrpcService\0222\n\tMoveTrans\022\021"
+    ".MoveTransRequest\032\022.MoveTransResponse\022/\n"
+    "\010MoveRota\022\020.MoveRotaRequest\032\021.MoveRotaRe"
+    "sponse\022A\n\016InstanceObject\022\026.InstanceObjec"
+    "tRequest\032\027.InstanceObjectResponse\022D\n\017Ton"
+    "gsManageMove\022\027.TongsManageMoveRequest\032\030."
+    "TongsManageMoveResponse\022M\n\022TongsManageOp"
+    "ening\022\032.TongsManageOpeningRequest\032\033.Tong"
+    "sManageOpeningResponse\022,\n\007MoveCam\022\017.Move"
+    "CamRequest\032\020.MoveCamResponseb\006proto3"
 };
 static ::absl::once_flag descriptor_table_com_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_com_2eproto = {
     false,
     false,
-    931,
+    916,
     descriptor_table_protodef_com_2eproto,
     "com.proto",
     &descriptor_table_com_2eproto_once,
@@ -1692,34 +1683,24 @@ TongsManageMoveRequest::TongsManageMoveRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:TongsManageMoveRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE TongsManageMoveRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : dir_(arena, from.dir_),
-        _cached_size_{0} {}
-
 TongsManageMoveRequest::TongsManageMoveRequest(
-    ::google::protobuf::Arena* arena,
-    const TongsManageMoveRequest& from)
-    : ::google::protobuf::Message(arena) {
-  TongsManageMoveRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  _impl_.distance_ = from._impl_.distance_;
-
-  // @@protoc_insertion_point(copy_constructor:TongsManageMoveRequest)
+    ::google::protobuf::Arena* arena, const TongsManageMoveRequest& from)
+    : TongsManageMoveRequest(arena) {
+  MergeFrom(from);
 }
 inline PROTOBUF_NDEBUG_INLINE TongsManageMoveRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : dir_(arena),
-        _cached_size_{0} {}
+      : _cached_size_{0} {}
 
 inline void TongsManageMoveRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.distance_ = {};
+  ::memset(reinterpret_cast<char *>(&_impl_) +
+               offsetof(Impl_, joinid_),
+           0,
+           offsetof(Impl_, dir_) -
+               offsetof(Impl_, joinid_) +
+               sizeof(Impl_::dir_));
 }
 TongsManageMoveRequest::~TongsManageMoveRequest() {
   // @@protoc_insertion_point(destructor:TongsManageMoveRequest)
@@ -1728,7 +1709,6 @@ TongsManageMoveRequest::~TongsManageMoveRequest() {
 }
 inline void TongsManageMoveRequest::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.dir_.Destroy();
   _impl_.~Impl_();
 }
 
@@ -1739,8 +1719,9 @@ PROTOBUF_NOINLINE void TongsManageMoveRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.dir_.ClearToEmpty();
-  _impl_.distance_ = 0;
+  ::memset(&_impl_.joinid_, 0, static_cast<::size_t>(
+      reinterpret_cast<char*>(&_impl_.dir_) -
+      reinterpret_cast<char*>(&_impl_.joinid_)) + sizeof(_impl_.dir_));
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1752,7 +1733,7 @@ const char* TongsManageMoveRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 34, 2> TongsManageMoveRequest::_table_ = {
+const ::_pbi::TcParseTable<1, 2, 0, 0, 2> TongsManageMoveRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -1766,27 +1747,24 @@ const ::_pbi::TcParseTable<1, 2, 0, 34, 2> TongsManageMoveRequest::_table_ = {
     &_TongsManageMoveRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // int32 distance = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(TongsManageMoveRequest, _impl_.distance_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.distance_)}},
-    // string dir = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.dir_)}},
+    // bool dir = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(TongsManageMoveRequest, _impl_.dir_), 63>(),
+     {16, 63, 0, PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.dir_)}},
+    // int32 joinId = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(TongsManageMoveRequest, _impl_.joinid_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.joinid_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string dir = 1;
-    {PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.dir_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // int32 distance = 2;
-    {PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.distance_), 0, 0,
+    // int32 joinId = 1;
+    {PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.joinid_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
+    // bool dir = 2;
+    {PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.dir_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }},
   // no aux_entries
   {{
-    "\26\3\0\0\0\0\0\0"
-    "TongsManageMoveRequest"
-    "dir"
   }},
 };
 
@@ -1797,19 +1775,18 @@ const ::_pbi::TcParseTable<1, 2, 0, 34, 2> TongsManageMoveRequest::_table_ = {
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // string dir = 1;
-  if (!this->_internal_dir().empty()) {
-    const std::string& _s = this->_internal_dir();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "TongsManageMoveRequest.dir");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+  // int32 joinId = 1;
+  if (this->_internal_joinid() != 0) {
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<1>(
+            stream, this->_internal_joinid(), target);
   }
 
-  // int32 distance = 2;
-  if (this->_internal_distance() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<2>(
-            stream, this->_internal_distance(), target);
+  // bool dir = 2;
+  if (this->_internal_dir() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        2, this->_internal_dir(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1829,16 +1806,15 @@ const ::_pbi::TcParseTable<1, 2, 0, 34, 2> TongsManageMoveRequest::_table_ = {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string dir = 1;
-  if (!this->_internal_dir().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_dir());
+  // int32 joinId = 1;
+  if (this->_internal_joinid() != 0) {
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_joinid());
   }
 
-  // int32 distance = 2;
-  if (this->_internal_distance() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_distance());
+  // bool dir = 2;
+  if (this->_internal_dir() != 0) {
+    total_size += 2;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -1860,11 +1836,11 @@ void TongsManageMoveRequest::MergeImpl(::google::protobuf::Message& to_msg, cons
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_dir().empty()) {
-    _this->_internal_set_dir(from._internal_dir());
+  if (from._internal_joinid() != 0) {
+    _this->_internal_set_joinid(from._internal_joinid());
   }
-  if (from._internal_distance() != 0) {
-    _this->_internal_set_distance(from._internal_distance());
+  if (from._internal_dir() != 0) {
+    _this->_internal_set_dir(from._internal_dir());
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
@@ -1885,11 +1861,13 @@ PROTOBUF_NOINLINE bool TongsManageMoveRequest::IsInitialized() const {
 }
 void TongsManageMoveRequest::InternalSwap(TongsManageMoveRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.dir_, &other->_impl_.dir_, arena);
-        swap(_impl_.distance_, other->_impl_.distance_);
+  ::google::protobuf::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.dir_)
+      + sizeof(TongsManageMoveRequest::_impl_.dir_)
+      - PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.joinid_)>(
+          reinterpret_cast<char*>(&_impl_.joinid_),
+          reinterpret_cast<char*>(&other->_impl_.joinid_));
 }
 
 ::google::protobuf::Metadata TongsManageMoveRequest::GetMetadata() const {
@@ -2098,32 +2076,19 @@ TongsManageOpeningRequest::TongsManageOpeningRequest(::google::protobuf::Arena* 
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:TongsManageOpeningRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE TongsManageOpeningRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : move_(arena, from.move_),
-        _cached_size_{0} {}
-
 TongsManageOpeningRequest::TongsManageOpeningRequest(
-    ::google::protobuf::Arena* arena,
-    const TongsManageOpeningRequest& from)
-    : ::google::protobuf::Message(arena) {
-  TongsManageOpeningRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-
-  // @@protoc_insertion_point(copy_constructor:TongsManageOpeningRequest)
+    ::google::protobuf::Arena* arena, const TongsManageOpeningRequest& from)
+    : TongsManageOpeningRequest(arena) {
+  MergeFrom(from);
 }
 inline PROTOBUF_NDEBUG_INLINE TongsManageOpeningRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : move_(arena),
-        _cached_size_{0} {}
+      : _cached_size_{0} {}
 
 inline void TongsManageOpeningRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
+  _impl_.move_ = {};
 }
 TongsManageOpeningRequest::~TongsManageOpeningRequest() {
   // @@protoc_insertion_point(destructor:TongsManageOpeningRequest)
@@ -2132,7 +2097,6 @@ TongsManageOpeningRequest::~TongsManageOpeningRequest() {
 }
 inline void TongsManageOpeningRequest::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.move_.Destroy();
   _impl_.~Impl_();
 }
 
@@ -2143,7 +2107,7 @@ PROTOBUF_NOINLINE void TongsManageOpeningRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.move_.ClearToEmpty();
+  _impl_.move_ = false;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -2155,7 +2119,7 @@ const char* TongsManageOpeningRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 38, 2> TongsManageOpeningRequest::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> TongsManageOpeningRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -2169,21 +2133,18 @@ const ::_pbi::TcParseTable<0, 1, 0, 38, 2> TongsManageOpeningRequest::_table_ = 
     &_TongsManageOpeningRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // string move = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TongsManageOpeningRequest, _impl_.move_)}},
+    // bool move = 1;
+    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(TongsManageOpeningRequest, _impl_.move_), 63>(),
+     {8, 63, 0, PROTOBUF_FIELD_OFFSET(TongsManageOpeningRequest, _impl_.move_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string move = 1;
+    // bool move = 1;
     {PROTOBUF_FIELD_OFFSET(TongsManageOpeningRequest, _impl_.move_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
   }},
   // no aux_entries
   {{
-    "\31\4\0\0\0\0\0\0"
-    "TongsManageOpeningRequest"
-    "move"
   }},
 };
 
@@ -2194,12 +2155,11 @@ const ::_pbi::TcParseTable<0, 1, 0, 38, 2> TongsManageOpeningRequest::_table_ = 
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // string move = 1;
-  if (!this->_internal_move().empty()) {
-    const std::string& _s = this->_internal_move();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "TongsManageOpeningRequest.move");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
+  // bool move = 1;
+  if (this->_internal_move() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(
+        1, this->_internal_move(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -2219,10 +2179,9 @@ const ::_pbi::TcParseTable<0, 1, 0, 38, 2> TongsManageOpeningRequest::_table_ = 
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // string move = 1;
-  if (!this->_internal_move().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_move());
+  // bool move = 1;
+  if (this->_internal_move() != 0) {
+    total_size += 2;
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -2244,7 +2203,7 @@ void TongsManageOpeningRequest::MergeImpl(::google::protobuf::Message& to_msg, c
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_move().empty()) {
+  if (from._internal_move() != 0) {
     _this->_internal_set_move(from._internal_move());
   }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
@@ -2266,10 +2225,8 @@ PROTOBUF_NOINLINE bool TongsManageOpeningRequest::IsInitialized() const {
 }
 void TongsManageOpeningRequest::InternalSwap(TongsManageOpeningRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.move_, &other->_impl_.move_, arena);
+        swap(_impl_.move_, other->_impl_.move_);
 }
 
 ::google::protobuf::Metadata TongsManageOpeningRequest::GetMetadata() const {
@@ -2478,30 +2435,15 @@ MoveCamRequest::MoveCamRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:MoveCamRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE MoveCamRequest::Impl_::Impl_(
-    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
-    const Impl_& from)
-      : dir_(arena, from.dir_),
-        _cached_size_{0} {}
-
 MoveCamRequest::MoveCamRequest(
-    ::google::protobuf::Arena* arena,
-    const MoveCamRequest& from)
-    : ::google::protobuf::Message(arena) {
-  MoveCamRequest* const _this = this;
-  (void)_this;
-  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
-      from._internal_metadata_);
-  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  _impl_.distance_ = from._impl_.distance_;
-
-  // @@protoc_insertion_point(copy_constructor:MoveCamRequest)
+    ::google::protobuf::Arena* arena, const MoveCamRequest& from)
+    : MoveCamRequest(arena) {
+  MergeFrom(from);
 }
 inline PROTOBUF_NDEBUG_INLINE MoveCamRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : dir_(arena),
-        _cached_size_{0} {}
+      : _cached_size_{0} {}
 
 inline void MoveCamRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
@@ -2514,7 +2456,6 @@ MoveCamRequest::~MoveCamRequest() {
 }
 inline void MoveCamRequest::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
-  _impl_.dir_.Destroy();
   _impl_.~Impl_();
 }
 
@@ -2525,7 +2466,6 @@ PROTOBUF_NOINLINE void MoveCamRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  _impl_.dir_.ClearToEmpty();
   _impl_.distance_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
@@ -2538,15 +2478,15 @@ const char* MoveCamRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 26, 2> MoveCamRequest::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 0, 2> MoveCamRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    2, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967293,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    1,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
     &_MoveCamRequest_default_instance_._instance,
@@ -2555,24 +2495,15 @@ const ::_pbi::TcParseTable<1, 2, 0, 26, 2> MoveCamRequest::_table_ = {
     // int32 distance = 2;
     {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(MoveCamRequest, _impl_.distance_), 63>(),
      {16, 63, 0, PROTOBUF_FIELD_OFFSET(MoveCamRequest, _impl_.distance_)}},
-    // string dir = 1;
-    {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MoveCamRequest, _impl_.dir_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // string dir = 1;
-    {PROTOBUF_FIELD_OFFSET(MoveCamRequest, _impl_.dir_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
     // int32 distance = 2;
     {PROTOBUF_FIELD_OFFSET(MoveCamRequest, _impl_.distance_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
-    "\16\3\0\0\0\0\0\0"
-    "MoveCamRequest"
-    "dir"
   }},
 };
 
@@ -2582,14 +2513,6 @@ const ::_pbi::TcParseTable<1, 2, 0, 26, 2> MoveCamRequest::_table_ = {
   // @@protoc_insertion_point(serialize_to_array_start:MoveCamRequest)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
-
-  // string dir = 1;
-  if (!this->_internal_dir().empty()) {
-    const std::string& _s = this->_internal_dir();
-    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "MoveCamRequest.dir");
-    target = stream->WriteStringMaybeAliased(1, _s, target);
-  }
 
   // int32 distance = 2;
   if (this->_internal_distance() != 0) {
@@ -2614,12 +2537,6 @@ const ::_pbi::TcParseTable<1, 2, 0, 26, 2> MoveCamRequest::_table_ = {
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
-
-  // string dir = 1;
-  if (!this->_internal_dir().empty()) {
-    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
-                                    this->_internal_dir());
-  }
 
   // int32 distance = 2;
   if (this->_internal_distance() != 0) {
@@ -2646,9 +2563,6 @@ void MoveCamRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::goog
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!from._internal_dir().empty()) {
-    _this->_internal_set_dir(from._internal_dir());
-  }
   if (from._internal_distance() != 0) {
     _this->_internal_set_distance(from._internal_distance());
   }
@@ -2671,10 +2585,7 @@ PROTOBUF_NOINLINE bool MoveCamRequest::IsInitialized() const {
 }
 void MoveCamRequest::InternalSwap(MoveCamRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
-  auto* arena = GetArena();
-  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.dir_, &other->_impl_.dir_, arena);
         swap(_impl_.distance_, other->_impl_.distance_);
 }
 

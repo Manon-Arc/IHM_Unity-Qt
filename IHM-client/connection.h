@@ -3,7 +3,8 @@
 
 #include <QMainWindow>
 #include <QCoreApplication>
-//#include <QtSql>
+//#include <QSqlQuery>
+//#include <QSqlDatabase>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -11,14 +12,16 @@ namespace Ui {
 }
 QT_END_NAMESPACE
 
-class Connection: public QMainWindow {
-    Q_OBJECT
+class Connection : public QMainWindow {
+Q_OBJECT
+
 public:
     explicit Connection(QWidget *parent);
 
     ~Connection() override;
 
     void connect();
+
 private:
 //    QSqlDatabase db =
     Ui::Dialog *ui;

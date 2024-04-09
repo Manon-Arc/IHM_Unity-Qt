@@ -417,20 +417,14 @@ class TongsManageOpeningRequest final :
   enum : int {
     kMoveFieldNumber = 1,
   };
-  // string move = 1;
+  // bool move = 1;
   void clear_move() ;
-  const std::string& move() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_move(Arg_&& arg, Args_... args);
-  std::string* mutable_move();
-  PROTOBUF_NODISCARD std::string* release_move();
-  void set_allocated_move(std::string* value);
+  bool move() const;
+  void set_move(bool value);
 
   private:
-  const std::string& _internal_move() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_move(
-      const std::string& value);
-  std::string* _internal_mutable_move();
+  bool _internal_move() const;
+  void _internal_set_move(bool value);
 
   public:
   // @@protoc_insertion_point(class_scope:TongsManageOpeningRequest)
@@ -440,7 +434,7 @@ class TongsManageOpeningRequest final :
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
       0, 1, 0,
-      38, 2>
+      0, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
   friend class ::google::protobuf::Arena;
@@ -456,7 +450,7 @@ class TongsManageOpeningRequest final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr move_;
+    bool move_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -777,33 +771,27 @@ class TongsManageMoveRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDirFieldNumber = 1,
-    kDistanceFieldNumber = 2,
+    kJoinIdFieldNumber = 1,
+    kDirFieldNumber = 2,
   };
-  // string dir = 1;
-  void clear_dir() ;
-  const std::string& dir() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_dir(Arg_&& arg, Args_... args);
-  std::string* mutable_dir();
-  PROTOBUF_NODISCARD std::string* release_dir();
-  void set_allocated_dir(std::string* value);
+  // int32 joinId = 1;
+  void clear_joinid() ;
+  ::int32_t joinid() const;
+  void set_joinid(::int32_t value);
 
   private:
-  const std::string& _internal_dir() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dir(
-      const std::string& value);
-  std::string* _internal_mutable_dir();
+  ::int32_t _internal_joinid() const;
+  void _internal_set_joinid(::int32_t value);
 
   public:
-  // int32 distance = 2;
-  void clear_distance() ;
-  ::int32_t distance() const;
-  void set_distance(::int32_t value);
+  // bool dir = 2;
+  void clear_dir() ;
+  bool dir() const;
+  void set_dir(bool value);
 
   private:
-  ::int32_t _internal_distance() const;
-  void _internal_set_distance(::int32_t value);
+  bool _internal_dir() const;
+  void _internal_set_dir(bool value);
 
   public:
   // @@protoc_insertion_point(class_scope:TongsManageMoveRequest)
@@ -813,7 +801,7 @@ class TongsManageMoveRequest final :
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
       1, 2, 0,
-      34, 2>
+      0, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
   friend class ::google::protobuf::Arena;
@@ -829,8 +817,8 @@ class TongsManageMoveRequest final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr dir_;
-    ::int32_t distance_;
+    ::int32_t joinid_;
+    bool dir_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
   };
@@ -1899,25 +1887,8 @@ class MoveCamRequest final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kDirFieldNumber = 1,
     kDistanceFieldNumber = 2,
   };
-  // string dir = 1;
-  void clear_dir() ;
-  const std::string& dir() const;
-  template <typename Arg_ = const std::string&, typename... Args_>
-  void set_dir(Arg_&& arg, Args_... args);
-  std::string* mutable_dir();
-  PROTOBUF_NODISCARD std::string* release_dir();
-  void set_allocated_dir(std::string* value);
-
-  private:
-  const std::string& _internal_dir() const;
-  inline PROTOBUF_ALWAYS_INLINE void _internal_set_dir(
-      const std::string& value);
-  std::string* _internal_mutable_dir();
-
-  public:
   // int32 distance = 2;
   void clear_distance() ;
   ::int32_t distance() const;
@@ -1934,8 +1905,8 @@ class MoveCamRequest final :
 
   friend class ::google::protobuf::internal::TcParser;
   static const ::google::protobuf::internal::TcParseTable<
-      1, 2, 0,
-      26, 2>
+      0, 1, 0,
+      0, 2>
       _table_;
   friend class ::google::protobuf::MessageLite;
   friend class ::google::protobuf::Arena;
@@ -1951,7 +1922,6 @@ class MoveCamRequest final :
                               ::google::protobuf::Arena* arena);
         inline explicit Impl_(::google::protobuf::internal::InternalVisibility visibility,
                               ::google::protobuf::Arena* arena, const Impl_& from);
-    ::google::protobuf::internal::ArenaStringPtr dir_;
     ::int32_t distance_;
     mutable ::google::protobuf::internal::CachedSize _cached_size_;
     PROTOBUF_TSAN_DECLARE_MEMBER
@@ -2726,80 +2696,50 @@ inline void InstanceObjectResponse::set_allocated_message(std::string* value) {
 
 // TongsManageMoveRequest
 
-// string dir = 1;
+// int32 joinId = 1;
+inline void TongsManageMoveRequest::clear_joinid() {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  _impl_.joinid_ = 0;
+}
+inline ::int32_t TongsManageMoveRequest::joinid() const {
+  // @@protoc_insertion_point(field_get:TongsManageMoveRequest.joinId)
+  return _internal_joinid();
+}
+inline void TongsManageMoveRequest::set_joinid(::int32_t value) {
+  _internal_set_joinid(value);
+  // @@protoc_insertion_point(field_set:TongsManageMoveRequest.joinId)
+}
+inline ::int32_t TongsManageMoveRequest::_internal_joinid() const {
+  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
+  return _impl_.joinid_;
+}
+inline void TongsManageMoveRequest::_internal_set_joinid(::int32_t value) {
+  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
+  ;
+  _impl_.joinid_ = value;
+}
+
+// bool dir = 2;
 inline void TongsManageMoveRequest::clear_dir() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.dir_.ClearToEmpty();
+  _impl_.dir_ = false;
 }
-inline const std::string& TongsManageMoveRequest::dir() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline bool TongsManageMoveRequest::dir() const {
   // @@protoc_insertion_point(field_get:TongsManageMoveRequest.dir)
   return _internal_dir();
 }
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void TongsManageMoveRequest::set_dir(Arg_&& arg,
-                                                     Args_... args) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.dir_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+inline void TongsManageMoveRequest::set_dir(bool value) {
+  _internal_set_dir(value);
   // @@protoc_insertion_point(field_set:TongsManageMoveRequest.dir)
 }
-inline std::string* TongsManageMoveRequest::mutable_dir() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_dir();
-  // @@protoc_insertion_point(field_mutable:TongsManageMoveRequest.dir)
-  return _s;
-}
-inline const std::string& TongsManageMoveRequest::_internal_dir() const {
+inline bool TongsManageMoveRequest::_internal_dir() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.dir_.Get();
+  return _impl_.dir_;
 }
-inline void TongsManageMoveRequest::_internal_set_dir(const std::string& value) {
+inline void TongsManageMoveRequest::_internal_set_dir(bool value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.dir_.Set(value, GetArena());
-}
-inline std::string* TongsManageMoveRequest::_internal_mutable_dir() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  return _impl_.dir_.Mutable( GetArena());
-}
-inline std::string* TongsManageMoveRequest::release_dir() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:TongsManageMoveRequest.dir)
-  return _impl_.dir_.Release();
-}
-inline void TongsManageMoveRequest::set_allocated_dir(std::string* value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.dir_.SetAllocated(value, GetArena());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.dir_.IsDefault()) {
-          _impl_.dir_.Set("", GetArena());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:TongsManageMoveRequest.dir)
-}
-
-// int32 distance = 2;
-inline void TongsManageMoveRequest::clear_distance() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.distance_ = 0;
-}
-inline ::int32_t TongsManageMoveRequest::distance() const {
-  // @@protoc_insertion_point(field_get:TongsManageMoveRequest.distance)
-  return _internal_distance();
-}
-inline void TongsManageMoveRequest::set_distance(::int32_t value) {
-  _internal_set_distance(value);
-  // @@protoc_insertion_point(field_set:TongsManageMoveRequest.distance)
-}
-inline ::int32_t TongsManageMoveRequest::_internal_distance() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.distance_;
-}
-inline void TongsManageMoveRequest::_internal_set_distance(::int32_t value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.distance_ = value;
+  _impl_.dir_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -2863,57 +2803,27 @@ inline void TongsManageMoveResponse::set_allocated_message(std::string* value) {
 
 // TongsManageOpeningRequest
 
-// string move = 1;
+// bool move = 1;
 inline void TongsManageOpeningRequest::clear_move() {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.move_.ClearToEmpty();
+  _impl_.move_ = false;
 }
-inline const std::string& TongsManageOpeningRequest::move() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
+inline bool TongsManageOpeningRequest::move() const {
   // @@protoc_insertion_point(field_get:TongsManageOpeningRequest.move)
   return _internal_move();
 }
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void TongsManageOpeningRequest::set_move(Arg_&& arg,
-                                                     Args_... args) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.move_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
+inline void TongsManageOpeningRequest::set_move(bool value) {
+  _internal_set_move(value);
   // @@protoc_insertion_point(field_set:TongsManageOpeningRequest.move)
 }
-inline std::string* TongsManageOpeningRequest::mutable_move() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_move();
-  // @@protoc_insertion_point(field_mutable:TongsManageOpeningRequest.move)
-  return _s;
-}
-inline const std::string& TongsManageOpeningRequest::_internal_move() const {
+inline bool TongsManageOpeningRequest::_internal_move() const {
   PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.move_.Get();
+  return _impl_.move_;
 }
-inline void TongsManageOpeningRequest::_internal_set_move(const std::string& value) {
+inline void TongsManageOpeningRequest::_internal_set_move(bool value) {
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ;
-  _impl_.move_.Set(value, GetArena());
-}
-inline std::string* TongsManageOpeningRequest::_internal_mutable_move() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  return _impl_.move_.Mutable( GetArena());
-}
-inline std::string* TongsManageOpeningRequest::release_move() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:TongsManageOpeningRequest.move)
-  return _impl_.move_.Release();
-}
-inline void TongsManageOpeningRequest::set_allocated_move(std::string* value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.move_.SetAllocated(value, GetArena());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.move_.IsDefault()) {
-          _impl_.move_.Set("", GetArena());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:TongsManageOpeningRequest.move)
+  _impl_.move_ = value;
 }
 
 // -------------------------------------------------------------------
@@ -2976,59 +2886,6 @@ inline void TongsManageOpeningResponse::set_allocated_message(std::string* value
 // -------------------------------------------------------------------
 
 // MoveCamRequest
-
-// string dir = 1;
-inline void MoveCamRequest::clear_dir() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.dir_.ClearToEmpty();
-}
-inline const std::string& MoveCamRequest::dir() const
-    ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  // @@protoc_insertion_point(field_get:MoveCamRequest.dir)
-  return _internal_dir();
-}
-template <typename Arg_, typename... Args_>
-inline PROTOBUF_ALWAYS_INLINE void MoveCamRequest::set_dir(Arg_&& arg,
-                                                     Args_... args) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.dir_.Set(static_cast<Arg_&&>(arg), args..., GetArena());
-  // @@protoc_insertion_point(field_set:MoveCamRequest.dir)
-}
-inline std::string* MoveCamRequest::mutable_dir() ABSL_ATTRIBUTE_LIFETIME_BOUND {
-  std::string* _s = _internal_mutable_dir();
-  // @@protoc_insertion_point(field_mutable:MoveCamRequest.dir)
-  return _s;
-}
-inline const std::string& MoveCamRequest::_internal_dir() const {
-  PROTOBUF_TSAN_READ(&_impl_._tsan_detect_race);
-  return _impl_.dir_.Get();
-}
-inline void MoveCamRequest::_internal_set_dir(const std::string& value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  _impl_.dir_.Set(value, GetArena());
-}
-inline std::string* MoveCamRequest::_internal_mutable_dir() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  ;
-  return _impl_.dir_.Mutable( GetArena());
-}
-inline std::string* MoveCamRequest::release_dir() {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  // @@protoc_insertion_point(field_release:MoveCamRequest.dir)
-  return _impl_.dir_.Release();
-}
-inline void MoveCamRequest::set_allocated_dir(std::string* value) {
-  PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
-  _impl_.dir_.SetAllocated(value, GetArena());
-  #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
-        if (_impl_.dir_.IsDefault()) {
-          _impl_.dir_.Set("", GetArena());
-        }
-  #endif  // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:MoveCamRequest.dir)
-}
 
 // int32 distance = 2;
 inline void MoveCamRequest::clear_distance() {

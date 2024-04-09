@@ -28,6 +28,8 @@ public slots:
 
     void moveRight();
 
+    void moveCam(int value);
+
 private:
     Ui::MainWindow *ui;
     GrpcServiceClient *m_grpcClient = nullptr;

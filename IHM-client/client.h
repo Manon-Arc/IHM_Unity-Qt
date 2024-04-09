@@ -18,9 +18,9 @@ public:
     std::string MoveTrans(const std::string& dir, int distance);
     std::string MoveRota(const std::string& dir, int angle);
     std::string InstanceObject(const std::string& object);
-    std::string TongsManageMove(const std::string& dir, int distance);
-    std::string TongsManageOpening(const std::string& move);
-    std::string MoveCam(const std::string& dir, int distance);
+    std::string TongsManageMove(const int joinId, const bool dir);
+    std::string TongsManageOpening(const bool &move);
+    std::string MoveCam(int distance);
 
 private:
     std::unique_ptr<GrpcService::Stub> stub_;

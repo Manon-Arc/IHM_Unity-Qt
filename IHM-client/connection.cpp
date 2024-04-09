@@ -2,8 +2,7 @@
 #include "ui_connection.h"
 
 Connection::Connection(QWidget *parent) :
-    QMainWindow(parent), ui(new Ui::Dialog)
-{
+        QMainWindow(parent), ui(new Ui::Dialog) {
 
 }
 
