@@ -13,11 +13,14 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets
         LinguistTools
         Protobuf
         Grpc
-        Core
-#        Sql
 )
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
 qt_standard_project_setup()
+
+find_library(SQLITE3_LIBRARY sqlite3)
+
+set(DATABASE_FILE "db")
+configure_file(${DATABASE_FILE} ${CMAKE_CURRENT_BINARY_DIR}/${DATABASE_FILE} COPYONLY)
 
 
 set(TS_FILES IHM_en_US.ts)
@@ -49,6 +52,7 @@ if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
             MANUAL_FINALIZATION
             ${PROJECT_SOURCES}
             connection.h connection.cpp
+
     )
     # Define target properties for Android with Qt 6 as:
     #    set_property(TARGET IHM APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -75,9 +79,7 @@ endif ()
 target_link_libraries(IHM PRIVATE
         Qt${QT_VERSION_MAJOR}::Widgets
         gRPC::grpc++
-        Qt6::Core
-#        Qt6::Sql
-#        mariadbclient
+        ${SQLITE3_LIBRARY}
 )
 
 
