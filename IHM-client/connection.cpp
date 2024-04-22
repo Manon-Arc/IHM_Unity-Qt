@@ -18,10 +18,7 @@ Connection::~Connection() {
 }
 
 bool Connection::open() {
-    if (sqlite3_open(m_dbName.toStdString().c_str(), &m_db) == SQLITE_OK)
-        return true;
-    else
-        return false;
+    return sqlite3_open(m_dbName.toStdString().c_str(), &m_db) == SQLITE_OK;
 }
 
 void Connection::close() {
