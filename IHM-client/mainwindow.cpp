@@ -38,6 +38,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_button_cylinder, &QPushButton::clicked, this, &MainWindow::createCylinder);
     connect(m_button_open, &QPushButton::clicked, this, &MainWindow::openTongs);
     connect(m_button_close, &QPushButton::clicked, this, &MainWindow::closeTongs);
+    connect(m_button_x1, &QPushButton::clicked, this, &MainWindow::openTongs);
+    connect(m_button_x2, &QPushButton::clicked, this, &MainWindow::closeTongs);
+    connect(m_button_x1_2, &QPushButton::clicked, this, &MainWindow::openTongs);
+    connect(m_button_x2_2, &QPushButton::clicked, this, &MainWindow::closeTongs);
 }
 
 MainWindow::~MainWindow() {
@@ -47,23 +51,23 @@ MainWindow::~MainWindow() {
 
 
 void MainWindow::moveUp() {
-    qDebug("Déplacement vers le haut");
-    m_grpcClient->MoveTrans("up", 1);
+    qDebug("Déplacement vers l'avant");
+    m_grpcClient->MoveBot("av");
 }
 
 void MainWindow::moveDown() {
-    qDebug("Déplacement vers le bas");
-    m_grpcClient->MoveTrans("down", 1);
+    qDebug("Déplacement vers l'arrière");
+    m_grpcClient->MoveBot("ar");
 }
 
 void MainWindow::moveLeft() {
-    qDebug("Déplacement vers la gauche");
-    m_grpcClient->MoveTrans("left", 1);
+    qDebug("Rotation vers la gauche");
+    m_grpcClient->RotaBot("g");
 }
 
 void MainWindow::moveRight() {
-    m_grpcClient->MoveTrans("right", 1);
-    qDebug("Déplacement vers la droite");
+    m_grpcClient->RotaBot("d");
+    qDebug("Rotation vers la droite");
 }
 
 void MainWindow::moveCam(int value) {
@@ -83,7 +87,7 @@ void MainWindow::createSphere() {
 }
 
 void MainWindow::createCylinder() {
-    m_grpcClient->InstanceObject("cylinder");
+    m_grpcClient->InstanceObject("cylindre");
     qDebug() << "Création d'un cylindre";
 }
 

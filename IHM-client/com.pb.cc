@@ -84,8 +84,10 @@ PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
 
 inline constexpr TongsManageMoveRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
-      : joinid_{0},
-        dir_{false},
+      : joinname_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        dir_{0},
         _cached_size_{0} {}
 
 template <typename>
@@ -102,7 +104,7 @@ struct TongsManageMoveRequestDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 TongsManageMoveRequestDefaultTypeInternal _TongsManageMoveRequest_default_instance_;
 
-inline constexpr MoveTransResponse::Impl_::Impl_(
+inline constexpr RotaBotResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : message_(
             &::google::protobuf::internal::fixed_address_empty_string,
@@ -110,83 +112,39 @@ inline constexpr MoveTransResponse::Impl_::Impl_(
         _cached_size_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR MoveTransResponse::MoveTransResponse(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR RotaBotResponse::RotaBotResponse(::_pbi::ConstantInitialized)
     : _impl_(::_pbi::ConstantInitialized()) {}
-struct MoveTransResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR MoveTransResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~MoveTransResponseDefaultTypeInternal() {}
+struct RotaBotResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RotaBotResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RotaBotResponseDefaultTypeInternal() {}
   union {
-    MoveTransResponse _instance;
+    RotaBotResponse _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MoveTransResponseDefaultTypeInternal _MoveTransResponse_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RotaBotResponseDefaultTypeInternal _RotaBotResponse_default_instance_;
 
-inline constexpr MoveTransRequest::Impl_::Impl_(
+inline constexpr RotaBotRequest::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
       : dir_(
             &::google::protobuf::internal::fixed_address_empty_string,
             ::_pbi::ConstantInitialized()),
-        distance_{0},
         _cached_size_{0} {}
 
 template <typename>
-PROTOBUF_CONSTEXPR MoveTransRequest::MoveTransRequest(::_pbi::ConstantInitialized)
+PROTOBUF_CONSTEXPR RotaBotRequest::RotaBotRequest(::_pbi::ConstantInitialized)
     : _impl_(::_pbi::ConstantInitialized()) {}
-struct MoveTransRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR MoveTransRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~MoveTransRequestDefaultTypeInternal() {}
+struct RotaBotRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR RotaBotRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~RotaBotRequestDefaultTypeInternal() {}
   union {
-    MoveTransRequest _instance;
+    RotaBotRequest _instance;
   };
 };
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MoveTransRequestDefaultTypeInternal _MoveTransRequest_default_instance_;
-
-inline constexpr MoveRotaResponse::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : message_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR MoveRotaResponse::MoveRotaResponse(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct MoveRotaResponseDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR MoveRotaResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~MoveRotaResponseDefaultTypeInternal() {}
-  union {
-    MoveRotaResponse _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MoveRotaResponseDefaultTypeInternal _MoveRotaResponse_default_instance_;
-
-inline constexpr MoveRotaRequest::Impl_::Impl_(
-    ::_pbi::ConstantInitialized) noexcept
-      : dir_(
-            &::google::protobuf::internal::fixed_address_empty_string,
-            ::_pbi::ConstantInitialized()),
-        angle_{0},
-        _cached_size_{0} {}
-
-template <typename>
-PROTOBUF_CONSTEXPR MoveRotaRequest::MoveRotaRequest(::_pbi::ConstantInitialized)
-    : _impl_(::_pbi::ConstantInitialized()) {}
-struct MoveRotaRequestDefaultTypeInternal {
-  PROTOBUF_CONSTEXPR MoveRotaRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
-  ~MoveRotaRequestDefaultTypeInternal() {}
-  union {
-    MoveRotaRequest _instance;
-  };
-};
-
-PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
-    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MoveRotaRequestDefaultTypeInternal _MoveRotaRequest_default_instance_;
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RotaBotRequestDefaultTypeInternal _RotaBotRequest_default_instance_;
 
 inline constexpr MoveCamResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -227,6 +185,48 @@ struct MoveCamRequestDefaultTypeInternal {
 
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
     PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MoveCamRequestDefaultTypeInternal _MoveCamRequest_default_instance_;
+
+inline constexpr MoveBotResponse::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : message_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR MoveBotResponse::MoveBotResponse(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct MoveBotResponseDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MoveBotResponseDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MoveBotResponseDefaultTypeInternal() {}
+  union {
+    MoveBotResponse _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MoveBotResponseDefaultTypeInternal _MoveBotResponse_default_instance_;
+
+inline constexpr MoveBotRequest::Impl_::Impl_(
+    ::_pbi::ConstantInitialized) noexcept
+      : dir_(
+            &::google::protobuf::internal::fixed_address_empty_string,
+            ::_pbi::ConstantInitialized()),
+        _cached_size_{0} {}
+
+template <typename>
+PROTOBUF_CONSTEXPR MoveBotRequest::MoveBotRequest(::_pbi::ConstantInitialized)
+    : _impl_(::_pbi::ConstantInitialized()) {}
+struct MoveBotRequestDefaultTypeInternal {
+  PROTOBUF_CONSTEXPR MoveBotRequestDefaultTypeInternal() : _instance(::_pbi::ConstantInitialized{}) {}
+  ~MoveBotRequestDefaultTypeInternal() {}
+  union {
+    MoveBotRequest _instance;
+  };
+};
+
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT
+    PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 MoveBotRequestDefaultTypeInternal _MoveBotRequest_default_instance_;
 
 inline constexpr InstanceObjectResponse::Impl_::Impl_(
     ::_pbi::ConstantInitialized) noexcept
@@ -277,43 +277,41 @@ static constexpr const ::_pb::ServiceDescriptor**
 const ::uint32_t TableStruct_com_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     protodesc_cold) = {
     ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::MoveTransRequest, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::MoveBotRequest, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::MoveTransRequest, _impl_.dir_),
-    PROTOBUF_FIELD_OFFSET(::MoveTransRequest, _impl_.distance_),
+    PROTOBUF_FIELD_OFFSET(::MoveBotRequest, _impl_.dir_),
     ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::MoveTransResponse, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::MoveBotResponse, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::MoveTransResponse, _impl_.message_),
+    PROTOBUF_FIELD_OFFSET(::MoveBotResponse, _impl_.message_),
     ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::MoveRotaRequest, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::RotaBotRequest, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::MoveRotaRequest, _impl_.dir_),
-    PROTOBUF_FIELD_OFFSET(::MoveRotaRequest, _impl_.angle_),
+    PROTOBUF_FIELD_OFFSET(::RotaBotRequest, _impl_.dir_),
     ~0u,  // no _has_bits_
-    PROTOBUF_FIELD_OFFSET(::MoveRotaResponse, _internal_metadata_),
+    PROTOBUF_FIELD_OFFSET(::RotaBotResponse, _internal_metadata_),
     ~0u,  // no _extensions_
     ~0u,  // no _oneof_case_
     ~0u,  // no _weak_field_map_
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::MoveRotaResponse, _impl_.message_),
+    PROTOBUF_FIELD_OFFSET(::RotaBotResponse, _impl_.message_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::InstanceObjectRequest, _internal_metadata_),
     ~0u,  // no _extensions_
@@ -340,7 +338,7 @@ const ::uint32_t TableStruct_com_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
     ~0u,  // no _inlined_string_donated_
     ~0u,  // no _split_
     ~0u,  // no sizeof(Split)
-    PROTOBUF_FIELD_OFFSET(::TongsManageMoveRequest, _impl_.joinid_),
+    PROTOBUF_FIELD_OFFSET(::TongsManageMoveRequest, _impl_.joinname_),
     PROTOBUF_FIELD_OFFSET(::TongsManageMoveRequest, _impl_.dir_),
     ~0u,  // no _has_bits_
     PROTOBUF_FIELD_OFFSET(::TongsManageMoveResponse, _internal_metadata_),
@@ -391,25 +389,25 @@ const ::uint32_t TableStruct_com_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(
 
 static const ::_pbi::MigrationSchema
     schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-        {0, -1, -1, sizeof(::MoveTransRequest)},
-        {10, -1, -1, sizeof(::MoveTransResponse)},
-        {19, -1, -1, sizeof(::MoveRotaRequest)},
-        {29, -1, -1, sizeof(::MoveRotaResponse)},
-        {38, -1, -1, sizeof(::InstanceObjectRequest)},
-        {47, -1, -1, sizeof(::InstanceObjectResponse)},
-        {56, -1, -1, sizeof(::TongsManageMoveRequest)},
-        {66, -1, -1, sizeof(::TongsManageMoveResponse)},
-        {75, -1, -1, sizeof(::TongsManageOpeningRequest)},
-        {84, -1, -1, sizeof(::TongsManageOpeningResponse)},
-        {93, -1, -1, sizeof(::MoveCamRequest)},
-        {102, -1, -1, sizeof(::MoveCamResponse)},
+        {0, -1, -1, sizeof(::MoveBotRequest)},
+        {9, -1, -1, sizeof(::MoveBotResponse)},
+        {18, -1, -1, sizeof(::RotaBotRequest)},
+        {27, -1, -1, sizeof(::RotaBotResponse)},
+        {36, -1, -1, sizeof(::InstanceObjectRequest)},
+        {45, -1, -1, sizeof(::InstanceObjectResponse)},
+        {54, -1, -1, sizeof(::TongsManageMoveRequest)},
+        {64, -1, -1, sizeof(::TongsManageMoveResponse)},
+        {73, -1, -1, sizeof(::TongsManageOpeningRequest)},
+        {82, -1, -1, sizeof(::TongsManageOpeningResponse)},
+        {91, -1, -1, sizeof(::MoveCamRequest)},
+        {100, -1, -1, sizeof(::MoveCamResponse)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-    &::_MoveTransRequest_default_instance_._instance,
-    &::_MoveTransResponse_default_instance_._instance,
-    &::_MoveRotaRequest_default_instance_._instance,
-    &::_MoveRotaResponse_default_instance_._instance,
+    &::_MoveBotRequest_default_instance_._instance,
+    &::_MoveBotResponse_default_instance_._instance,
+    &::_RotaBotRequest_default_instance_._instance,
+    &::_RotaBotResponse_default_instance_._instance,
     &::_InstanceObjectRequest_default_instance_._instance,
     &::_InstanceObjectResponse_default_instance_._instance,
     &::_TongsManageMoveRequest_default_instance_._instance,
@@ -420,35 +418,34 @@ static const ::_pb::Message* const file_default_instances[] = {
     &::_MoveCamResponse_default_instance_._instance,
 };
 const char descriptor_table_protodef_com_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-    "\n\tcom.proto\"1\n\020MoveTransRequest\022\013\n\003dir\030\001"
-    " \001(\t\022\020\n\010distance\030\002 \001(\005\"$\n\021MoveTransRespo"
-    "nse\022\017\n\007message\030\001 \001(\t\"-\n\017MoveRotaRequest\022"
-    "\013\n\003dir\030\001 \001(\t\022\r\n\005angle\030\002 \001(\005\"#\n\020MoveRotaR"
-    "esponse\022\017\n\007message\030\001 \001(\t\"\'\n\025InstanceObje"
-    "ctRequest\022\016\n\006object\030\001 \001(\t\")\n\026InstanceObj"
-    "ectResponse\022\017\n\007message\030\001 \001(\t\"5\n\026TongsMan"
-    "ageMoveRequest\022\016\n\006joinId\030\001 \001(\005\022\013\n\003dir\030\002 "
-    "\001(\010\"*\n\027TongsManageMoveResponse\022\017\n\007messag"
-    "e\030\001 \001(\t\")\n\031TongsManageOpeningRequest\022\014\n\004"
-    "move\030\001 \001(\010\"-\n\032TongsManageOpeningResponse"
-    "\022\017\n\007message\030\001 \001(\t\"\"\n\016MoveCamRequest\022\020\n\010d"
-    "istance\030\002 \001(\005\"\"\n\017MoveCamResponse\022\017\n\007mess"
-    "age\030\001 \001(\t2\370\002\n\013GrpcService\0222\n\tMoveTrans\022\021"
-    ".MoveTransRequest\032\022.MoveTransResponse\022/\n"
-    "\010MoveRota\022\020.MoveRotaRequest\032\021.MoveRotaRe"
-    "sponse\022A\n\016InstanceObject\022\026.InstanceObjec"
-    "tRequest\032\027.InstanceObjectResponse\022D\n\017Ton"
-    "gsManageMove\022\027.TongsManageMoveRequest\032\030."
-    "TongsManageMoveResponse\022M\n\022TongsManageOp"
-    "ening\022\032.TongsManageOpeningRequest\032\033.Tong"
-    "sManageOpeningResponse\022,\n\007MoveCam\022\017.Move"
-    "CamRequest\032\020.MoveCamResponseb\006proto3"
+    "\n\tcom.proto\"\035\n\016MoveBotRequest\022\013\n\003dir\030\001 \001"
+    "(\t\"\"\n\017MoveBotResponse\022\017\n\007message\030\001 \001(\t\"\035"
+    "\n\016RotaBotRequest\022\013\n\003dir\030\001 \001(\t\"\"\n\017RotaBot"
+    "Response\022\017\n\007message\030\001 \001(\t\"\'\n\025InstanceObj"
+    "ectRequest\022\016\n\006object\030\001 \001(\t\")\n\026InstanceOb"
+    "jectResponse\022\017\n\007message\030\001 \001(\t\"7\n\026TongsMa"
+    "nageMoveRequest\022\020\n\010joinName\030\001 \001(\t\022\013\n\003dir"
+    "\030\002 \001(\005\"*\n\027TongsManageMoveResponse\022\017\n\007mes"
+    "sage\030\001 \001(\t\")\n\031TongsManageOpeningRequest\022"
+    "\014\n\004move\030\001 \001(\010\"-\n\032TongsManageOpeningRespo"
+    "nse\022\017\n\007message\030\001 \001(\t\"\"\n\016MoveCamRequest\022\020"
+    "\n\010distance\030\002 \001(\005\"\"\n\017MoveCamResponse\022\017\n\007m"
+    "essage\030\001 \001(\t2\357\002\n\013GrpcService\022,\n\007MoveBot\022"
+    "\017.MoveBotRequest\032\020.MoveBotResponse\022,\n\007Ro"
+    "taBot\022\017.RotaBotRequest\032\020.RotaBotResponse"
+    "\022A\n\016InstanceObject\022\026.InstanceObjectReque"
+    "st\032\027.InstanceObjectResponse\022D\n\017TongsMana"
+    "geMove\022\027.TongsManageMoveRequest\032\030.TongsM"
+    "anageMoveResponse\022M\n\022TongsManageOpening\022"
+    "\032.TongsManageOpeningRequest\032\033.TongsManag"
+    "eOpeningResponse\022,\n\007MoveCam\022\017.MoveCamReq"
+    "uest\032\020.MoveCamResponseb\006proto3"
 };
 static ::absl::once_flag descriptor_table_com_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_com_2eproto = {
     false,
     false,
-    916,
+    870,
     descriptor_table_protodef_com_2eproto,
     "com.proto",
     &descriptor_table_com_2eproto_once,
@@ -482,68 +479,65 @@ PROTOBUF_ATTRIBUTE_INIT_PRIORITY2
 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_com_2eproto(&descriptor_table_com_2eproto);
 // ===================================================================
 
-class MoveTransRequest::_Internal {
+class MoveBotRequest::_Internal {
  public:
 };
 
-MoveTransRequest::MoveTransRequest(::google::protobuf::Arena* arena)
+MoveBotRequest::MoveBotRequest(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:MoveTransRequest)
+  // @@protoc_insertion_point(arena_constructor:MoveBotRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE MoveTransRequest::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE MoveBotRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
       : dir_(arena, from.dir_),
         _cached_size_{0} {}
 
-MoveTransRequest::MoveTransRequest(
+MoveBotRequest::MoveBotRequest(
     ::google::protobuf::Arena* arena,
-    const MoveTransRequest& from)
+    const MoveBotRequest& from)
     : ::google::protobuf::Message(arena) {
-  MoveTransRequest* const _this = this;
+  MoveBotRequest* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  _impl_.distance_ = from._impl_.distance_;
 
-  // @@protoc_insertion_point(copy_constructor:MoveTransRequest)
+  // @@protoc_insertion_point(copy_constructor:MoveBotRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE MoveTransRequest::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE MoveBotRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : dir_(arena),
         _cached_size_{0} {}
 
-inline void MoveTransRequest::SharedCtor(::_pb::Arena* arena) {
+inline void MoveBotRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.distance_ = {};
 }
-MoveTransRequest::~MoveTransRequest() {
-  // @@protoc_insertion_point(destructor:MoveTransRequest)
+MoveBotRequest::~MoveBotRequest() {
+  // @@protoc_insertion_point(destructor:MoveBotRequest)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void MoveTransRequest::SharedDtor() {
+inline void MoveBotRequest::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
   _impl_.dir_.Destroy();
   _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void MoveTransRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:MoveTransRequest)
+PROTOBUF_NOINLINE void MoveBotRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:MoveBotRequest)
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.dir_.ClearToEmpty();
-  _impl_.distance_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* MoveTransRequest::_InternalParse(
+const char* MoveBotRequest::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -551,48 +545,42 @@ const char* MoveTransRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 28, 2> MoveTransRequest::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 26, 2> MoveBotRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    1, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967294,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    1,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_MoveTransRequest_default_instance_._instance,
+    &_MoveBotRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // int32 distance = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(MoveTransRequest, _impl_.distance_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(MoveTransRequest, _impl_.distance_)}},
     // string dir = 1;
     {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MoveTransRequest, _impl_.dir_)}},
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MoveBotRequest, _impl_.dir_)}},
   }}, {{
     65535, 65535
   }}, {{
     // string dir = 1;
-    {PROTOBUF_FIELD_OFFSET(MoveTransRequest, _impl_.dir_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(MoveBotRequest, _impl_.dir_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // int32 distance = 2;
-    {PROTOBUF_FIELD_OFFSET(MoveTransRequest, _impl_.distance_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
-    "\20\3\0\0\0\0\0\0"
-    "MoveTransRequest"
+    "\16\3\0\0\0\0\0\0"
+    "MoveBotRequest"
     "dir"
   }},
 };
 
-::uint8_t* MoveTransRequest::_InternalSerialize(
+::uint8_t* MoveBotRequest::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:MoveTransRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:MoveBotRequest)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -600,15 +588,8 @@ const ::_pbi::TcParseTable<1, 2, 0, 28, 2> MoveTransRequest::_table_ = {
   if (!this->_internal_dir().empty()) {
     const std::string& _s = this->_internal_dir();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "MoveTransRequest.dir");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "MoveBotRequest.dir");
     target = stream->WriteStringMaybeAliased(1, _s, target);
-  }
-
-  // int32 distance = 2;
-  if (this->_internal_distance() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<2>(
-            stream, this->_internal_distance(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -616,12 +597,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 28, 2> MoveTransRequest::_table_ = {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:MoveTransRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:MoveBotRequest)
   return target;
 }
 
-::size_t MoveTransRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:MoveTransRequest)
+::size_t MoveBotRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:MoveBotRequest)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -634,27 +615,21 @@ const ::_pbi::TcParseTable<1, 2, 0, 28, 2> MoveTransRequest::_table_ = {
                                     this->_internal_dir());
   }
 
-  // int32 distance = 2;
-  if (this->_internal_distance() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_distance());
-  }
-
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData MoveTransRequest::_class_data_ = {
-    MoveTransRequest::MergeImpl,
+const ::google::protobuf::Message::ClassData MoveBotRequest::_class_data_ = {
+    MoveBotRequest::MergeImpl,
     nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData* MoveTransRequest::GetClassData() const {
+const ::google::protobuf::Message::ClassData* MoveBotRequest::GetClassData() const {
   return &_class_data_;
 }
 
-void MoveTransRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<MoveTransRequest*>(&to_msg);
-  auto& from = static_cast<const MoveTransRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:MoveTransRequest)
+void MoveBotRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<MoveBotRequest*>(&to_msg);
+  auto& from = static_cast<const MoveBotRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:MoveBotRequest)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -662,91 +637,87 @@ void MoveTransRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::go
   if (!from._internal_dir().empty()) {
     _this->_internal_set_dir(from._internal_dir());
   }
-  if (from._internal_distance() != 0) {
-    _this->_internal_set_distance(from._internal_distance());
-  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void MoveTransRequest::CopyFrom(const MoveTransRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:MoveTransRequest)
+void MoveBotRequest::CopyFrom(const MoveBotRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:MoveBotRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool MoveTransRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool MoveBotRequest::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* MoveTransRequest::AccessCachedSize() const {
+::_pbi::CachedSize* MoveBotRequest::AccessCachedSize() const {
   return &_impl_._cached_size_;
 }
-void MoveTransRequest::InternalSwap(MoveTransRequest* PROTOBUF_RESTRICT other) {
+void MoveBotRequest::InternalSwap(MoveBotRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.dir_, &other->_impl_.dir_, arena);
-        swap(_impl_.distance_, other->_impl_.distance_);
 }
 
-::google::protobuf::Metadata MoveTransRequest::GetMetadata() const {
+::google::protobuf::Metadata MoveBotRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_com_2eproto_getter, &descriptor_table_com_2eproto_once,
       file_level_metadata_com_2eproto[0]);
 }
 // ===================================================================
 
-class MoveTransResponse::_Internal {
+class MoveBotResponse::_Internal {
  public:
 };
 
-MoveTransResponse::MoveTransResponse(::google::protobuf::Arena* arena)
+MoveBotResponse::MoveBotResponse(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:MoveTransResponse)
+  // @@protoc_insertion_point(arena_constructor:MoveBotResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE MoveTransResponse::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE MoveBotResponse::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
       : message_(arena, from.message_),
         _cached_size_{0} {}
 
-MoveTransResponse::MoveTransResponse(
+MoveBotResponse::MoveBotResponse(
     ::google::protobuf::Arena* arena,
-    const MoveTransResponse& from)
+    const MoveBotResponse& from)
     : ::google::protobuf::Message(arena) {
-  MoveTransResponse* const _this = this;
+  MoveBotResponse* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
-  // @@protoc_insertion_point(copy_constructor:MoveTransResponse)
+  // @@protoc_insertion_point(copy_constructor:MoveBotResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE MoveTransResponse::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE MoveBotResponse::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : message_(arena),
         _cached_size_{0} {}
 
-inline void MoveTransResponse::SharedCtor(::_pb::Arena* arena) {
+inline void MoveBotResponse::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
 }
-MoveTransResponse::~MoveTransResponse() {
-  // @@protoc_insertion_point(destructor:MoveTransResponse)
+MoveBotResponse::~MoveBotResponse() {
+  // @@protoc_insertion_point(destructor:MoveBotResponse)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void MoveTransResponse::SharedDtor() {
+inline void MoveBotResponse::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
   _impl_.message_.Destroy();
   _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void MoveTransResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:MoveTransResponse)
+PROTOBUF_NOINLINE void MoveBotResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:MoveBotResponse)
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -756,7 +727,7 @@ PROTOBUF_NOINLINE void MoveTransResponse::Clear() {
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* MoveTransResponse::_InternalParse(
+const char* MoveBotResponse::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -764,7 +735,7 @@ const char* MoveTransResponse::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 33, 2> MoveTransResponse::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 31, 2> MoveBotResponse::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -775,31 +746,31 @@ const ::_pbi::TcParseTable<0, 1, 0, 33, 2> MoveTransResponse::_table_ = {
     1,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_MoveTransResponse_default_instance_._instance,
+    &_MoveBotResponse_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
     // string message = 1;
     {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MoveTransResponse, _impl_.message_)}},
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MoveBotResponse, _impl_.message_)}},
   }}, {{
     65535, 65535
   }}, {{
     // string message = 1;
-    {PROTOBUF_FIELD_OFFSET(MoveTransResponse, _impl_.message_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(MoveBotResponse, _impl_.message_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\21\7\0\0\0\0\0\0"
-    "MoveTransResponse"
+    "\17\7\0\0\0\0\0\0"
+    "MoveBotResponse"
     "message"
   }},
 };
 
-::uint8_t* MoveTransResponse::_InternalSerialize(
+::uint8_t* MoveBotResponse::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:MoveTransResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:MoveBotResponse)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -807,7 +778,7 @@ const ::_pbi::TcParseTable<0, 1, 0, 33, 2> MoveTransResponse::_table_ = {
   if (!this->_internal_message().empty()) {
     const std::string& _s = this->_internal_message();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "MoveTransResponse.message");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "MoveBotResponse.message");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
@@ -816,12 +787,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 33, 2> MoveTransResponse::_table_ = {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:MoveTransResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:MoveBotResponse)
   return target;
 }
 
-::size_t MoveTransResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:MoveTransResponse)
+::size_t MoveBotResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:MoveBotResponse)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -837,18 +808,18 @@ const ::_pbi::TcParseTable<0, 1, 0, 33, 2> MoveTransResponse::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData MoveTransResponse::_class_data_ = {
-    MoveTransResponse::MergeImpl,
+const ::google::protobuf::Message::ClassData MoveBotResponse::_class_data_ = {
+    MoveBotResponse::MergeImpl,
     nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData* MoveTransResponse::GetClassData() const {
+const ::google::protobuf::Message::ClassData* MoveBotResponse::GetClassData() const {
   return &_class_data_;
 }
 
-void MoveTransResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<MoveTransResponse*>(&to_msg);
-  auto& from = static_cast<const MoveTransResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:MoveTransResponse)
+void MoveBotResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<MoveBotResponse*>(&to_msg);
+  auto& from = static_cast<const MoveBotResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:MoveBotResponse)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -859,21 +830,21 @@ void MoveTransResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::g
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void MoveTransResponse::CopyFrom(const MoveTransResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:MoveTransResponse)
+void MoveBotResponse::CopyFrom(const MoveBotResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:MoveBotResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool MoveTransResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool MoveBotResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* MoveTransResponse::AccessCachedSize() const {
+::_pbi::CachedSize* MoveBotResponse::AccessCachedSize() const {
   return &_impl_._cached_size_;
 }
-void MoveTransResponse::InternalSwap(MoveTransResponse* PROTOBUF_RESTRICT other) {
+void MoveBotResponse::InternalSwap(MoveBotResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
@@ -881,75 +852,72 @@ void MoveTransResponse::InternalSwap(MoveTransResponse* PROTOBUF_RESTRICT other)
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
 }
 
-::google::protobuf::Metadata MoveTransResponse::GetMetadata() const {
+::google::protobuf::Metadata MoveBotResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_com_2eproto_getter, &descriptor_table_com_2eproto_once,
       file_level_metadata_com_2eproto[1]);
 }
 // ===================================================================
 
-class MoveRotaRequest::_Internal {
+class RotaBotRequest::_Internal {
  public:
 };
 
-MoveRotaRequest::MoveRotaRequest(::google::protobuf::Arena* arena)
+RotaBotRequest::RotaBotRequest(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:MoveRotaRequest)
+  // @@protoc_insertion_point(arena_constructor:RotaBotRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE MoveRotaRequest::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE RotaBotRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
       : dir_(arena, from.dir_),
         _cached_size_{0} {}
 
-MoveRotaRequest::MoveRotaRequest(
+RotaBotRequest::RotaBotRequest(
     ::google::protobuf::Arena* arena,
-    const MoveRotaRequest& from)
+    const RotaBotRequest& from)
     : ::google::protobuf::Message(arena) {
-  MoveRotaRequest* const _this = this;
+  RotaBotRequest* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
-  _impl_.angle_ = from._impl_.angle_;
 
-  // @@protoc_insertion_point(copy_constructor:MoveRotaRequest)
+  // @@protoc_insertion_point(copy_constructor:RotaBotRequest)
 }
-inline PROTOBUF_NDEBUG_INLINE MoveRotaRequest::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE RotaBotRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : dir_(arena),
         _cached_size_{0} {}
 
-inline void MoveRotaRequest::SharedCtor(::_pb::Arena* arena) {
+inline void RotaBotRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  _impl_.angle_ = {};
 }
-MoveRotaRequest::~MoveRotaRequest() {
-  // @@protoc_insertion_point(destructor:MoveRotaRequest)
+RotaBotRequest::~RotaBotRequest() {
+  // @@protoc_insertion_point(destructor:RotaBotRequest)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void MoveRotaRequest::SharedDtor() {
+inline void RotaBotRequest::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
   _impl_.dir_.Destroy();
   _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void MoveRotaRequest::Clear() {
-// @@protoc_insertion_point(message_clear_start:MoveRotaRequest)
+PROTOBUF_NOINLINE void RotaBotRequest::Clear() {
+// @@protoc_insertion_point(message_clear_start:RotaBotRequest)
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
   _impl_.dir_.ClearToEmpty();
-  _impl_.angle_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* MoveRotaRequest::_InternalParse(
+const char* RotaBotRequest::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -957,48 +925,42 @@ const char* MoveRotaRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 27, 2> MoveRotaRequest::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 26, 2> RotaBotRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
-    2, 8,  // max_field_number, fast_idx_mask
+    1, 0,  // max_field_number, fast_idx_mask
     offsetof(decltype(_table_), field_lookup_table),
-    4294967292,  // skipmap
+    4294967294,  // skipmap
     offsetof(decltype(_table_), field_entries),
-    2,  // num_field_entries
+    1,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_MoveRotaRequest_default_instance_._instance,
+    &_RotaBotRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // int32 angle = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(MoveRotaRequest, _impl_.angle_), 63>(),
-     {16, 63, 0, PROTOBUF_FIELD_OFFSET(MoveRotaRequest, _impl_.angle_)}},
     // string dir = 1;
     {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MoveRotaRequest, _impl_.dir_)}},
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(RotaBotRequest, _impl_.dir_)}},
   }}, {{
     65535, 65535
   }}, {{
     // string dir = 1;
-    {PROTOBUF_FIELD_OFFSET(MoveRotaRequest, _impl_.dir_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(RotaBotRequest, _impl_.dir_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
-    // int32 angle = 2;
-    {PROTOBUF_FIELD_OFFSET(MoveRotaRequest, _impl_.angle_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
-    "\17\3\0\0\0\0\0\0"
-    "MoveRotaRequest"
+    "\16\3\0\0\0\0\0\0"
+    "RotaBotRequest"
     "dir"
   }},
 };
 
-::uint8_t* MoveRotaRequest::_InternalSerialize(
+::uint8_t* RotaBotRequest::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:MoveRotaRequest)
+  // @@protoc_insertion_point(serialize_to_array_start:RotaBotRequest)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -1006,15 +968,8 @@ const ::_pbi::TcParseTable<1, 2, 0, 27, 2> MoveRotaRequest::_table_ = {
   if (!this->_internal_dir().empty()) {
     const std::string& _s = this->_internal_dir();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "MoveRotaRequest.dir");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "RotaBotRequest.dir");
     target = stream->WriteStringMaybeAliased(1, _s, target);
-  }
-
-  // int32 angle = 2;
-  if (this->_internal_angle() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<2>(
-            stream, this->_internal_angle(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1022,12 +977,12 @@ const ::_pbi::TcParseTable<1, 2, 0, 27, 2> MoveRotaRequest::_table_ = {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:MoveRotaRequest)
+  // @@protoc_insertion_point(serialize_to_array_end:RotaBotRequest)
   return target;
 }
 
-::size_t MoveRotaRequest::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:MoveRotaRequest)
+::size_t RotaBotRequest::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:RotaBotRequest)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -1040,27 +995,21 @@ const ::_pbi::TcParseTable<1, 2, 0, 27, 2> MoveRotaRequest::_table_ = {
                                     this->_internal_dir());
   }
 
-  // int32 angle = 2;
-  if (this->_internal_angle() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_angle());
-  }
-
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData MoveRotaRequest::_class_data_ = {
-    MoveRotaRequest::MergeImpl,
+const ::google::protobuf::Message::ClassData RotaBotRequest::_class_data_ = {
+    RotaBotRequest::MergeImpl,
     nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData* MoveRotaRequest::GetClassData() const {
+const ::google::protobuf::Message::ClassData* RotaBotRequest::GetClassData() const {
   return &_class_data_;
 }
 
-void MoveRotaRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<MoveRotaRequest*>(&to_msg);
-  auto& from = static_cast<const MoveRotaRequest&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:MoveRotaRequest)
+void RotaBotRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<RotaBotRequest*>(&to_msg);
+  auto& from = static_cast<const RotaBotRequest&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:RotaBotRequest)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1068,91 +1017,87 @@ void MoveRotaRequest::MergeImpl(::google::protobuf::Message& to_msg, const ::goo
   if (!from._internal_dir().empty()) {
     _this->_internal_set_dir(from._internal_dir());
   }
-  if (from._internal_angle() != 0) {
-    _this->_internal_set_angle(from._internal_angle());
-  }
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void MoveRotaRequest::CopyFrom(const MoveRotaRequest& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:MoveRotaRequest)
+void RotaBotRequest::CopyFrom(const RotaBotRequest& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:RotaBotRequest)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool MoveRotaRequest::IsInitialized() const {
+PROTOBUF_NOINLINE bool RotaBotRequest::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* MoveRotaRequest::AccessCachedSize() const {
+::_pbi::CachedSize* RotaBotRequest::AccessCachedSize() const {
   return &_impl_._cached_size_;
 }
-void MoveRotaRequest::InternalSwap(MoveRotaRequest* PROTOBUF_RESTRICT other) {
+void RotaBotRequest::InternalSwap(RotaBotRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.dir_, &other->_impl_.dir_, arena);
-        swap(_impl_.angle_, other->_impl_.angle_);
 }
 
-::google::protobuf::Metadata MoveRotaRequest::GetMetadata() const {
+::google::protobuf::Metadata RotaBotRequest::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_com_2eproto_getter, &descriptor_table_com_2eproto_once,
       file_level_metadata_com_2eproto[2]);
 }
 // ===================================================================
 
-class MoveRotaResponse::_Internal {
+class RotaBotResponse::_Internal {
  public:
 };
 
-MoveRotaResponse::MoveRotaResponse(::google::protobuf::Arena* arena)
+RotaBotResponse::RotaBotResponse(::google::protobuf::Arena* arena)
     : ::google::protobuf::Message(arena) {
   SharedCtor(arena);
-  // @@protoc_insertion_point(arena_constructor:MoveRotaResponse)
+  // @@protoc_insertion_point(arena_constructor:RotaBotResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE MoveRotaResponse::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE RotaBotResponse::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
     const Impl_& from)
       : message_(arena, from.message_),
         _cached_size_{0} {}
 
-MoveRotaResponse::MoveRotaResponse(
+RotaBotResponse::RotaBotResponse(
     ::google::protobuf::Arena* arena,
-    const MoveRotaResponse& from)
+    const RotaBotResponse& from)
     : ::google::protobuf::Message(arena) {
-  MoveRotaResponse* const _this = this;
+  RotaBotResponse* const _this = this;
   (void)_this;
   _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
       from._internal_metadata_);
   new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
 
-  // @@protoc_insertion_point(copy_constructor:MoveRotaResponse)
+  // @@protoc_insertion_point(copy_constructor:RotaBotResponse)
 }
-inline PROTOBUF_NDEBUG_INLINE MoveRotaResponse::Impl_::Impl_(
+inline PROTOBUF_NDEBUG_INLINE RotaBotResponse::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
       : message_(arena),
         _cached_size_{0} {}
 
-inline void MoveRotaResponse::SharedCtor(::_pb::Arena* arena) {
+inline void RotaBotResponse::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
 }
-MoveRotaResponse::~MoveRotaResponse() {
-  // @@protoc_insertion_point(destructor:MoveRotaResponse)
+RotaBotResponse::~RotaBotResponse() {
+  // @@protoc_insertion_point(destructor:RotaBotResponse)
   _internal_metadata_.Delete<::google::protobuf::UnknownFieldSet>();
   SharedDtor();
 }
-inline void MoveRotaResponse::SharedDtor() {
+inline void RotaBotResponse::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
   _impl_.message_.Destroy();
   _impl_.~Impl_();
 }
 
-PROTOBUF_NOINLINE void MoveRotaResponse::Clear() {
-// @@protoc_insertion_point(message_clear_start:MoveRotaResponse)
+PROTOBUF_NOINLINE void RotaBotResponse::Clear() {
+// @@protoc_insertion_point(message_clear_start:RotaBotResponse)
   PROTOBUF_TSAN_WRITE(&_impl_._tsan_detect_race);
   ::uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
@@ -1162,7 +1107,7 @@ PROTOBUF_NOINLINE void MoveRotaResponse::Clear() {
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
-const char* MoveRotaResponse::_InternalParse(
+const char* RotaBotResponse::_InternalParse(
     const char* ptr, ::_pbi::ParseContext* ctx) {
   ptr = ::_pbi::TcParser::ParseLoop(this, ptr, ctx, &_table_.header);
   return ptr;
@@ -1170,7 +1115,7 @@ const char* MoveRotaResponse::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<0, 1, 0, 32, 2> MoveRotaResponse::_table_ = {
+const ::_pbi::TcParseTable<0, 1, 0, 31, 2> RotaBotResponse::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -1181,31 +1126,31 @@ const ::_pbi::TcParseTable<0, 1, 0, 32, 2> MoveRotaResponse::_table_ = {
     1,  // num_field_entries
     0,  // num_aux_entries
     offsetof(decltype(_table_), field_names),  // no aux_entries
-    &_MoveRotaResponse_default_instance_._instance,
+    &_RotaBotResponse_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
     // string message = 1;
     {::_pbi::TcParser::FastUS1,
-     {10, 63, 0, PROTOBUF_FIELD_OFFSET(MoveRotaResponse, _impl_.message_)}},
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(RotaBotResponse, _impl_.message_)}},
   }}, {{
     65535, 65535
   }}, {{
     // string message = 1;
-    {PROTOBUF_FIELD_OFFSET(MoveRotaResponse, _impl_.message_), 0, 0,
+    {PROTOBUF_FIELD_OFFSET(RotaBotResponse, _impl_.message_), 0, 0,
     (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
   }},
   // no aux_entries
   {{
-    "\20\7\0\0\0\0\0\0"
-    "MoveRotaResponse"
+    "\17\7\0\0\0\0\0\0"
+    "RotaBotResponse"
     "message"
   }},
 };
 
-::uint8_t* MoveRotaResponse::_InternalSerialize(
+::uint8_t* RotaBotResponse::_InternalSerialize(
     ::uint8_t* target,
     ::google::protobuf::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:MoveRotaResponse)
+  // @@protoc_insertion_point(serialize_to_array_start:RotaBotResponse)
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
@@ -1213,7 +1158,7 @@ const ::_pbi::TcParseTable<0, 1, 0, 32, 2> MoveRotaResponse::_table_ = {
   if (!this->_internal_message().empty()) {
     const std::string& _s = this->_internal_message();
     ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
-        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "MoveRotaResponse.message");
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "RotaBotResponse.message");
     target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
@@ -1222,12 +1167,12 @@ const ::_pbi::TcParseTable<0, 1, 0, 32, 2> MoveRotaResponse::_table_ = {
         ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
             _internal_metadata_.unknown_fields<::google::protobuf::UnknownFieldSet>(::google::protobuf::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:MoveRotaResponse)
+  // @@protoc_insertion_point(serialize_to_array_end:RotaBotResponse)
   return target;
 }
 
-::size_t MoveRotaResponse::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:MoveRotaResponse)
+::size_t RotaBotResponse::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:RotaBotResponse)
   ::size_t total_size = 0;
 
   ::uint32_t cached_has_bits = 0;
@@ -1243,18 +1188,18 @@ const ::_pbi::TcParseTable<0, 1, 0, 32, 2> MoveRotaResponse::_table_ = {
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
 }
 
-const ::google::protobuf::Message::ClassData MoveRotaResponse::_class_data_ = {
-    MoveRotaResponse::MergeImpl,
+const ::google::protobuf::Message::ClassData RotaBotResponse::_class_data_ = {
+    RotaBotResponse::MergeImpl,
     nullptr,  // OnDemandRegisterArenaDtor
 };
-const ::google::protobuf::Message::ClassData* MoveRotaResponse::GetClassData() const {
+const ::google::protobuf::Message::ClassData* RotaBotResponse::GetClassData() const {
   return &_class_data_;
 }
 
-void MoveRotaResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
-  auto* const _this = static_cast<MoveRotaResponse*>(&to_msg);
-  auto& from = static_cast<const MoveRotaResponse&>(from_msg);
-  // @@protoc_insertion_point(class_specific_merge_from_start:MoveRotaResponse)
+void RotaBotResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::google::protobuf::Message& from_msg) {
+  auto* const _this = static_cast<RotaBotResponse*>(&to_msg);
+  auto& from = static_cast<const RotaBotResponse&>(from_msg);
+  // @@protoc_insertion_point(class_specific_merge_from_start:RotaBotResponse)
   ABSL_DCHECK_NE(&from, _this);
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -1265,21 +1210,21 @@ void MoveRotaResponse::MergeImpl(::google::protobuf::Message& to_msg, const ::go
   _this->_internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(from._internal_metadata_);
 }
 
-void MoveRotaResponse::CopyFrom(const MoveRotaResponse& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:MoveRotaResponse)
+void RotaBotResponse::CopyFrom(const RotaBotResponse& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:RotaBotResponse)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
 }
 
-PROTOBUF_NOINLINE bool MoveRotaResponse::IsInitialized() const {
+PROTOBUF_NOINLINE bool RotaBotResponse::IsInitialized() const {
   return true;
 }
 
-::_pbi::CachedSize* MoveRotaResponse::AccessCachedSize() const {
+::_pbi::CachedSize* RotaBotResponse::AccessCachedSize() const {
   return &_impl_._cached_size_;
 }
-void MoveRotaResponse::InternalSwap(MoveRotaResponse* PROTOBUF_RESTRICT other) {
+void RotaBotResponse::InternalSwap(RotaBotResponse* PROTOBUF_RESTRICT other) {
   using std::swap;
   auto* arena = GetArena();
   ABSL_DCHECK_EQ(arena, other->GetArena());
@@ -1287,7 +1232,7 @@ void MoveRotaResponse::InternalSwap(MoveRotaResponse* PROTOBUF_RESTRICT other) {
   ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.message_, &other->_impl_.message_, arena);
 }
 
-::google::protobuf::Metadata MoveRotaResponse::GetMetadata() const {
+::google::protobuf::Metadata RotaBotResponse::GetMetadata() const {
   return ::_pbi::AssignDescriptors(
       &descriptor_table_com_2eproto_getter, &descriptor_table_com_2eproto_once,
       file_level_metadata_com_2eproto[3]);
@@ -1683,24 +1628,34 @@ TongsManageMoveRequest::TongsManageMoveRequest(::google::protobuf::Arena* arena)
   SharedCtor(arena);
   // @@protoc_insertion_point(arena_constructor:TongsManageMoveRequest)
 }
+inline PROTOBUF_NDEBUG_INLINE TongsManageMoveRequest::Impl_::Impl_(
+    ::google::protobuf::internal::InternalVisibility visibility, ::google::protobuf::Arena* arena,
+    const Impl_& from)
+      : joinname_(arena, from.joinname_),
+        _cached_size_{0} {}
+
 TongsManageMoveRequest::TongsManageMoveRequest(
-    ::google::protobuf::Arena* arena, const TongsManageMoveRequest& from)
-    : TongsManageMoveRequest(arena) {
-  MergeFrom(from);
+    ::google::protobuf::Arena* arena,
+    const TongsManageMoveRequest& from)
+    : ::google::protobuf::Message(arena) {
+  TongsManageMoveRequest* const _this = this;
+  (void)_this;
+  _internal_metadata_.MergeFrom<::google::protobuf::UnknownFieldSet>(
+      from._internal_metadata_);
+  new (&_impl_) Impl_(internal_visibility(), arena, from._impl_);
+  _impl_.dir_ = from._impl_.dir_;
+
+  // @@protoc_insertion_point(copy_constructor:TongsManageMoveRequest)
 }
 inline PROTOBUF_NDEBUG_INLINE TongsManageMoveRequest::Impl_::Impl_(
     ::google::protobuf::internal::InternalVisibility visibility,
     ::google::protobuf::Arena* arena)
-      : _cached_size_{0} {}
+      : joinname_(arena),
+        _cached_size_{0} {}
 
 inline void TongsManageMoveRequest::SharedCtor(::_pb::Arena* arena) {
   new (&_impl_) Impl_(internal_visibility(), arena);
-  ::memset(reinterpret_cast<char *>(&_impl_) +
-               offsetof(Impl_, joinid_),
-           0,
-           offsetof(Impl_, dir_) -
-               offsetof(Impl_, joinid_) +
-               sizeof(Impl_::dir_));
+  _impl_.dir_ = {};
 }
 TongsManageMoveRequest::~TongsManageMoveRequest() {
   // @@protoc_insertion_point(destructor:TongsManageMoveRequest)
@@ -1709,6 +1664,7 @@ TongsManageMoveRequest::~TongsManageMoveRequest() {
 }
 inline void TongsManageMoveRequest::SharedDtor() {
   ABSL_DCHECK(GetArena() == nullptr);
+  _impl_.joinname_.Destroy();
   _impl_.~Impl_();
 }
 
@@ -1719,9 +1675,8 @@ PROTOBUF_NOINLINE void TongsManageMoveRequest::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&_impl_.joinid_, 0, static_cast<::size_t>(
-      reinterpret_cast<char*>(&_impl_.dir_) -
-      reinterpret_cast<char*>(&_impl_.joinid_)) + sizeof(_impl_.dir_));
+  _impl_.joinname_.ClearToEmpty();
+  _impl_.dir_ = 0;
   _internal_metadata_.Clear<::google::protobuf::UnknownFieldSet>();
 }
 
@@ -1733,7 +1688,7 @@ const char* TongsManageMoveRequest::_InternalParse(
 
 
 PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1
-const ::_pbi::TcParseTable<1, 2, 0, 0, 2> TongsManageMoveRequest::_table_ = {
+const ::_pbi::TcParseTable<1, 2, 0, 39, 2> TongsManageMoveRequest::_table_ = {
   {
     0,  // no _has_bits_
     0, // no _extensions_
@@ -1747,24 +1702,27 @@ const ::_pbi::TcParseTable<1, 2, 0, 0, 2> TongsManageMoveRequest::_table_ = {
     &_TongsManageMoveRequest_default_instance_._instance,
     ::_pbi::TcParser::GenericFallback,  // fallback
   }, {{
-    // bool dir = 2;
-    {::_pbi::TcParser::SingularVarintNoZag1<bool, offsetof(TongsManageMoveRequest, _impl_.dir_), 63>(),
+    // int32 dir = 2;
+    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(TongsManageMoveRequest, _impl_.dir_), 63>(),
      {16, 63, 0, PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.dir_)}},
-    // int32 joinId = 1;
-    {::_pbi::TcParser::SingularVarintNoZag1<::uint32_t, offsetof(TongsManageMoveRequest, _impl_.joinid_), 63>(),
-     {8, 63, 0, PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.joinid_)}},
+    // string joinName = 1;
+    {::_pbi::TcParser::FastUS1,
+     {10, 63, 0, PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.joinname_)}},
   }}, {{
     65535, 65535
   }}, {{
-    // int32 joinId = 1;
-    {PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.joinid_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
-    // bool dir = 2;
+    // string joinName = 1;
+    {PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.joinname_), 0, 0,
+    (0 | ::_fl::kFcSingular | ::_fl::kUtf8String | ::_fl::kRepAString)},
+    // int32 dir = 2;
     {PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.dir_), 0, 0,
-    (0 | ::_fl::kFcSingular | ::_fl::kBool)},
+    (0 | ::_fl::kFcSingular | ::_fl::kInt32)},
   }},
   // no aux_entries
   {{
+    "\26\10\0\0\0\0\0\0"
+    "TongsManageMoveRequest"
+    "joinName"
   }},
 };
 
@@ -1775,18 +1733,19 @@ const ::_pbi::TcParseTable<1, 2, 0, 0, 2> TongsManageMoveRequest::_table_ = {
   ::uint32_t cached_has_bits = 0;
   (void)cached_has_bits;
 
-  // int32 joinId = 1;
-  if (this->_internal_joinid() != 0) {
-    target = ::google::protobuf::internal::WireFormatLite::
-        WriteInt32ToArrayWithField<1>(
-            stream, this->_internal_joinid(), target);
+  // string joinName = 1;
+  if (!this->_internal_joinname().empty()) {
+    const std::string& _s = this->_internal_joinname();
+    ::google::protobuf::internal::WireFormatLite::VerifyUtf8String(
+        _s.data(), static_cast<int>(_s.length()), ::google::protobuf::internal::WireFormatLite::SERIALIZE, "TongsManageMoveRequest.joinName");
+    target = stream->WriteStringMaybeAliased(1, _s, target);
   }
 
-  // bool dir = 2;
+  // int32 dir = 2;
   if (this->_internal_dir() != 0) {
-    target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(
-        2, this->_internal_dir(), target);
+    target = ::google::protobuf::internal::WireFormatLite::
+        WriteInt32ToArrayWithField<2>(
+            stream, this->_internal_dir(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1806,15 +1765,16 @@ const ::_pbi::TcParseTable<1, 2, 0, 0, 2> TongsManageMoveRequest::_table_ = {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 joinId = 1;
-  if (this->_internal_joinid() != 0) {
-    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
-        this->_internal_joinid());
+  // string joinName = 1;
+  if (!this->_internal_joinname().empty()) {
+    total_size += 1 + ::google::protobuf::internal::WireFormatLite::StringSize(
+                                    this->_internal_joinname());
   }
 
-  // bool dir = 2;
+  // int32 dir = 2;
   if (this->_internal_dir() != 0) {
-    total_size += 2;
+    total_size += ::_pbi::WireFormatLite::Int32SizePlusOne(
+        this->_internal_dir());
   }
 
   return MaybeComputeUnknownFieldsSize(total_size, &_impl_._cached_size_);
@@ -1836,8 +1796,8 @@ void TongsManageMoveRequest::MergeImpl(::google::protobuf::Message& to_msg, cons
   ::uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (from._internal_joinid() != 0) {
-    _this->_internal_set_joinid(from._internal_joinid());
+  if (!from._internal_joinname().empty()) {
+    _this->_internal_set_joinname(from._internal_joinname());
   }
   if (from._internal_dir() != 0) {
     _this->_internal_set_dir(from._internal_dir());
@@ -1861,13 +1821,11 @@ PROTOBUF_NOINLINE bool TongsManageMoveRequest::IsInitialized() const {
 }
 void TongsManageMoveRequest::InternalSwap(TongsManageMoveRequest* PROTOBUF_RESTRICT other) {
   using std::swap;
+  auto* arena = GetArena();
+  ABSL_DCHECK_EQ(arena, other->GetArena());
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
-  ::google::protobuf::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.dir_)
-      + sizeof(TongsManageMoveRequest::_impl_.dir_)
-      - PROTOBUF_FIELD_OFFSET(TongsManageMoveRequest, _impl_.joinid_)>(
-          reinterpret_cast<char*>(&_impl_.joinid_),
-          reinterpret_cast<char*>(&other->_impl_.joinid_));
+  ::_pbi::ArenaStringPtr::InternalSwap(&_impl_.joinname_, &other->_impl_.joinname_, arena);
+        swap(_impl_.dir_, other->_impl_.dir_);
 }
 
 ::google::protobuf::Metadata TongsManageMoveRequest::GetMetadata() const {

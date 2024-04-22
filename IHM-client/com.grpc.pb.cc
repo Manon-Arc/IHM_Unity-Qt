@@ -21,8 +21,8 @@
 #include <grpcpp/support/sync_stream.h>
 
 static const char* GrpcService_method_names[] = {
-  "/GrpcService/MoveTrans",
-  "/GrpcService/MoveRota",
+  "/GrpcService/MoveBot",
+  "/GrpcService/RotaBot",
   "/GrpcService/InstanceObject",
   "/GrpcService/TongsManageMove",
   "/GrpcService/TongsManageOpening",
@@ -36,56 +36,56 @@ std::unique_ptr< GrpcService::Stub> GrpcService::NewStub(const std::shared_ptr< 
 }
 
 GrpcService::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options)
-  : channel_(channel), rpcmethod_MoveTrans_(GrpcService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
-  , rpcmethod_MoveRota_(GrpcService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  : channel_(channel), rpcmethod_MoveBot_(GrpcService_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_RotaBot_(GrpcService_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_InstanceObject_(GrpcService_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_TongsManageMove_(GrpcService_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_TongsManageOpening_(GrpcService_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_MoveCam_(GrpcService_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
-::grpc::Status GrpcService::Stub::MoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::MoveTransResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::MoveTransRequest, ::MoveTransResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_MoveTrans_, context, request, response);
+::grpc::Status GrpcService::Stub::MoveBot(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::MoveBotResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::MoveBotRequest, ::MoveBotResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_MoveBot_, context, request, response);
 }
 
-void GrpcService::Stub::async::MoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest* request, ::MoveTransResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::MoveTransRequest, ::MoveTransResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_MoveTrans_, context, request, response, std::move(f));
+void GrpcService::Stub::async::MoveBot(::grpc::ClientContext* context, const ::MoveBotRequest* request, ::MoveBotResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::MoveBotRequest, ::MoveBotResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_MoveBot_, context, request, response, std::move(f));
 }
 
-void GrpcService::Stub::async::MoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest* request, ::MoveTransResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_MoveTrans_, context, request, response, reactor);
+void GrpcService::Stub::async::MoveBot(::grpc::ClientContext* context, const ::MoveBotRequest* request, ::MoveBotResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_MoveBot_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::MoveTransResponse>* GrpcService::Stub::PrepareAsyncMoveTransRaw(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::MoveTransResponse, ::MoveTransRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_MoveTrans_, context, request);
+::grpc::ClientAsyncResponseReader< ::MoveBotResponse>* GrpcService::Stub::PrepareAsyncMoveBotRaw(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::MoveBotResponse, ::MoveBotRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_MoveBot_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::MoveTransResponse>* GrpcService::Stub::AsyncMoveTransRaw(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::MoveBotResponse>* GrpcService::Stub::AsyncMoveBotRaw(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncMoveTransRaw(context, request, cq);
+    this->PrepareAsyncMoveBotRaw(context, request, cq);
   result->StartCall();
   return result;
 }
 
-::grpc::Status GrpcService::Stub::MoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::MoveRotaResponse* response) {
-  return ::grpc::internal::BlockingUnaryCall< ::MoveRotaRequest, ::MoveRotaResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_MoveRota_, context, request, response);
+::grpc::Status GrpcService::Stub::RotaBot(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::RotaBotResponse* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::RotaBotRequest, ::RotaBotResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_RotaBot_, context, request, response);
 }
 
-void GrpcService::Stub::async::MoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest* request, ::MoveRotaResponse* response, std::function<void(::grpc::Status)> f) {
-  ::grpc::internal::CallbackUnaryCall< ::MoveRotaRequest, ::MoveRotaResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_MoveRota_, context, request, response, std::move(f));
+void GrpcService::Stub::async::RotaBot(::grpc::ClientContext* context, const ::RotaBotRequest* request, ::RotaBotResponse* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::RotaBotRequest, ::RotaBotResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RotaBot_, context, request, response, std::move(f));
 }
 
-void GrpcService::Stub::async::MoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest* request, ::MoveRotaResponse* response, ::grpc::ClientUnaryReactor* reactor) {
-  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_MoveRota_, context, request, response, reactor);
+void GrpcService::Stub::async::RotaBot(::grpc::ClientContext* context, const ::RotaBotRequest* request, ::RotaBotResponse* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_RotaBot_, context, request, response, reactor);
 }
 
-::grpc::ClientAsyncResponseReader< ::MoveRotaResponse>* GrpcService::Stub::PrepareAsyncMoveRotaRaw(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::grpc::CompletionQueue* cq) {
-  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::MoveRotaResponse, ::MoveRotaRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_MoveRota_, context, request);
+::grpc::ClientAsyncResponseReader< ::RotaBotResponse>* GrpcService::Stub::PrepareAsyncRotaBotRaw(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::RotaBotResponse, ::RotaBotRequest, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_RotaBot_, context, request);
 }
 
-::grpc::ClientAsyncResponseReader< ::MoveRotaResponse>* GrpcService::Stub::AsyncMoveRotaRaw(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::grpc::CompletionQueue* cq) {
+::grpc::ClientAsyncResponseReader< ::RotaBotResponse>* GrpcService::Stub::AsyncRotaBotRaw(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::grpc::CompletionQueue* cq) {
   auto* result =
-    this->PrepareAsyncMoveRotaRaw(context, request, cq);
+    this->PrepareAsyncRotaBotRaw(context, request, cq);
   result->StartCall();
   return result;
 }
@@ -186,22 +186,22 @@ GrpcService::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[0],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::MoveTransRequest, ::MoveTransResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::MoveBotRequest, ::MoveBotResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::MoveTransRequest* req,
-             ::MoveTransResponse* resp) {
-               return service->MoveTrans(ctx, req, resp);
+             const ::MoveBotRequest* req,
+             ::MoveBotResponse* resp) {
+               return service->MoveBot(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[1],
       ::grpc::internal::RpcMethod::NORMAL_RPC,
-      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::MoveRotaRequest, ::MoveRotaResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+      new ::grpc::internal::RpcMethodHandler< GrpcService::Service, ::RotaBotRequest, ::RotaBotResponse, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
           [](GrpcService::Service* service,
              ::grpc::ServerContext* ctx,
-             const ::MoveRotaRequest* req,
-             ::MoveRotaResponse* resp) {
-               return service->MoveRota(ctx, req, resp);
+             const ::RotaBotRequest* req,
+             ::RotaBotResponse* resp) {
+               return service->RotaBot(ctx, req, resp);
              }, this)));
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       GrpcService_method_names[2],
@@ -248,14 +248,14 @@ GrpcService::Service::Service() {
 GrpcService::Service::~Service() {
 }
 
-::grpc::Status GrpcService::Service::MoveTrans(::grpc::ServerContext* context, const ::MoveTransRequest* request, ::MoveTransResponse* response) {
+::grpc::Status GrpcService::Service::MoveBot(::grpc::ServerContext* context, const ::MoveBotRequest* request, ::MoveBotResponse* response) {
   (void) context;
   (void) request;
   (void) response;
   return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
 }
 
-::grpc::Status GrpcService::Service::MoveRota(::grpc::ServerContext* context, const ::MoveRotaRequest* request, ::MoveRotaResponse* response) {
+::grpc::Status GrpcService::Service::RotaBot(::grpc::ServerContext* context, const ::RotaBotRequest* request, ::RotaBotResponse* response) {
   (void) context;
   (void) request;
   (void) response;

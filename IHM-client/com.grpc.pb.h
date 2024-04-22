@@ -33,19 +33,19 @@ class GrpcService final {
   class StubInterface {
    public:
     virtual ~StubInterface() {}
-    virtual ::grpc::Status MoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::MoveTransResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveTransResponse>> AsyncMoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveTransResponse>>(AsyncMoveTransRaw(context, request, cq));
+    virtual ::grpc::Status MoveBot(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::MoveBotResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveBotResponse>> AsyncMoveBot(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveBotResponse>>(AsyncMoveBotRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveTransResponse>> PrepareAsyncMoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveTransResponse>>(PrepareAsyncMoveTransRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveBotResponse>> PrepareAsyncMoveBot(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveBotResponse>>(PrepareAsyncMoveBotRaw(context, request, cq));
     }
-    virtual ::grpc::Status MoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::MoveRotaResponse* response) = 0;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveRotaResponse>> AsyncMoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveRotaResponse>>(AsyncMoveRotaRaw(context, request, cq));
+    virtual ::grpc::Status RotaBot(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::RotaBotResponse* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RotaBotResponse>> AsyncRotaBot(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RotaBotResponse>>(AsyncRotaBotRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveRotaResponse>> PrepareAsyncMoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::MoveRotaResponse>>(PrepareAsyncMoveRotaRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RotaBotResponse>> PrepareAsyncRotaBot(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::RotaBotResponse>>(PrepareAsyncRotaBotRaw(context, request, cq));
     }
     virtual ::grpc::Status InstanceObject(::grpc::ClientContext* context, const ::InstanceObjectRequest& request, ::InstanceObjectResponse* response) = 0;
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::InstanceObjectResponse>> AsyncInstanceObject(::grpc::ClientContext* context, const ::InstanceObjectRequest& request, ::grpc::CompletionQueue* cq) {
@@ -78,10 +78,10 @@ class GrpcService final {
     class async_interface {
      public:
       virtual ~async_interface() {}
-      virtual void MoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest* request, ::MoveTransResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void MoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest* request, ::MoveTransResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
-      virtual void MoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest* request, ::MoveRotaResponse* response, std::function<void(::grpc::Status)>) = 0;
-      virtual void MoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest* request, ::MoveRotaResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void MoveBot(::grpc::ClientContext* context, const ::MoveBotRequest* request, ::MoveBotResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void MoveBot(::grpc::ClientContext* context, const ::MoveBotRequest* request, ::MoveBotResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void RotaBot(::grpc::ClientContext* context, const ::RotaBotRequest* request, ::RotaBotResponse* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void RotaBot(::grpc::ClientContext* context, const ::RotaBotRequest* request, ::RotaBotResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void InstanceObject(::grpc::ClientContext* context, const ::InstanceObjectRequest* request, ::InstanceObjectResponse* response, std::function<void(::grpc::Status)>) = 0;
       virtual void InstanceObject(::grpc::ClientContext* context, const ::InstanceObjectRequest* request, ::InstanceObjectResponse* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void TongsManageMove(::grpc::ClientContext* context, const ::TongsManageMoveRequest* request, ::TongsManageMoveResponse* response, std::function<void(::grpc::Status)>) = 0;
@@ -95,10 +95,10 @@ class GrpcService final {
     virtual class async_interface* async() { return nullptr; }
     class async_interface* experimental_async() { return async(); }
    private:
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MoveTransResponse>* AsyncMoveTransRaw(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MoveTransResponse>* PrepareAsyncMoveTransRaw(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MoveRotaResponse>* AsyncMoveRotaRaw(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::grpc::CompletionQueue* cq) = 0;
-    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MoveRotaResponse>* PrepareAsyncMoveRotaRaw(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MoveBotResponse>* AsyncMoveBotRaw(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::MoveBotResponse>* PrepareAsyncMoveBotRaw(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RotaBotResponse>* AsyncRotaBotRaw(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::RotaBotResponse>* PrepareAsyncRotaBotRaw(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::InstanceObjectResponse>* AsyncInstanceObjectRaw(::grpc::ClientContext* context, const ::InstanceObjectRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::InstanceObjectResponse>* PrepareAsyncInstanceObjectRaw(::grpc::ClientContext* context, const ::InstanceObjectRequest& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::TongsManageMoveResponse>* AsyncTongsManageMoveRaw(::grpc::ClientContext* context, const ::TongsManageMoveRequest& request, ::grpc::CompletionQueue* cq) = 0;
@@ -111,19 +111,19 @@ class GrpcService final {
   class Stub final : public StubInterface {
    public:
     Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
-    ::grpc::Status MoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::MoveTransResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveTransResponse>> AsyncMoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveTransResponse>>(AsyncMoveTransRaw(context, request, cq));
+    ::grpc::Status MoveBot(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::MoveBotResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveBotResponse>> AsyncMoveBot(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveBotResponse>>(AsyncMoveBotRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveTransResponse>> PrepareAsyncMoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveTransResponse>>(PrepareAsyncMoveTransRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveBotResponse>> PrepareAsyncMoveBot(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveBotResponse>>(PrepareAsyncMoveBotRaw(context, request, cq));
     }
-    ::grpc::Status MoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::MoveRotaResponse* response) override;
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveRotaResponse>> AsyncMoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveRotaResponse>>(AsyncMoveRotaRaw(context, request, cq));
+    ::grpc::Status RotaBot(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::RotaBotResponse* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RotaBotResponse>> AsyncRotaBot(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RotaBotResponse>>(AsyncRotaBotRaw(context, request, cq));
     }
-    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveRotaResponse>> PrepareAsyncMoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::grpc::CompletionQueue* cq) {
-      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::MoveRotaResponse>>(PrepareAsyncMoveRotaRaw(context, request, cq));
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RotaBotResponse>> PrepareAsyncRotaBot(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::RotaBotResponse>>(PrepareAsyncRotaBotRaw(context, request, cq));
     }
     ::grpc::Status InstanceObject(::grpc::ClientContext* context, const ::InstanceObjectRequest& request, ::InstanceObjectResponse* response) override;
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::InstanceObjectResponse>> AsyncInstanceObject(::grpc::ClientContext* context, const ::InstanceObjectRequest& request, ::grpc::CompletionQueue* cq) {
@@ -156,10 +156,10 @@ class GrpcService final {
     class async final :
       public StubInterface::async_interface {
      public:
-      void MoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest* request, ::MoveTransResponse* response, std::function<void(::grpc::Status)>) override;
-      void MoveTrans(::grpc::ClientContext* context, const ::MoveTransRequest* request, ::MoveTransResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
-      void MoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest* request, ::MoveRotaResponse* response, std::function<void(::grpc::Status)>) override;
-      void MoveRota(::grpc::ClientContext* context, const ::MoveRotaRequest* request, ::MoveRotaResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void MoveBot(::grpc::ClientContext* context, const ::MoveBotRequest* request, ::MoveBotResponse* response, std::function<void(::grpc::Status)>) override;
+      void MoveBot(::grpc::ClientContext* context, const ::MoveBotRequest* request, ::MoveBotResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void RotaBot(::grpc::ClientContext* context, const ::RotaBotRequest* request, ::RotaBotResponse* response, std::function<void(::grpc::Status)>) override;
+      void RotaBot(::grpc::ClientContext* context, const ::RotaBotRequest* request, ::RotaBotResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void InstanceObject(::grpc::ClientContext* context, const ::InstanceObjectRequest* request, ::InstanceObjectResponse* response, std::function<void(::grpc::Status)>) override;
       void InstanceObject(::grpc::ClientContext* context, const ::InstanceObjectRequest* request, ::InstanceObjectResponse* response, ::grpc::ClientUnaryReactor* reactor) override;
       void TongsManageMove(::grpc::ClientContext* context, const ::TongsManageMoveRequest* request, ::TongsManageMoveResponse* response, std::function<void(::grpc::Status)>) override;
@@ -179,10 +179,10 @@ class GrpcService final {
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
     class async async_stub_{this};
-    ::grpc::ClientAsyncResponseReader< ::MoveTransResponse>* AsyncMoveTransRaw(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::MoveTransResponse>* PrepareAsyncMoveTransRaw(::grpc::ClientContext* context, const ::MoveTransRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::MoveRotaResponse>* AsyncMoveRotaRaw(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::grpc::CompletionQueue* cq) override;
-    ::grpc::ClientAsyncResponseReader< ::MoveRotaResponse>* PrepareAsyncMoveRotaRaw(::grpc::ClientContext* context, const ::MoveRotaRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::MoveBotResponse>* AsyncMoveBotRaw(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::MoveBotResponse>* PrepareAsyncMoveBotRaw(::grpc::ClientContext* context, const ::MoveBotRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RotaBotResponse>* AsyncRotaBotRaw(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::RotaBotResponse>* PrepareAsyncRotaBotRaw(::grpc::ClientContext* context, const ::RotaBotRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::InstanceObjectResponse>* AsyncInstanceObjectRaw(::grpc::ClientContext* context, const ::InstanceObjectRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::InstanceObjectResponse>* PrepareAsyncInstanceObjectRaw(::grpc::ClientContext* context, const ::InstanceObjectRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::TongsManageMoveResponse>* AsyncTongsManageMoveRaw(::grpc::ClientContext* context, const ::TongsManageMoveRequest& request, ::grpc::CompletionQueue* cq) override;
@@ -191,8 +191,8 @@ class GrpcService final {
     ::grpc::ClientAsyncResponseReader< ::TongsManageOpeningResponse>* PrepareAsyncTongsManageOpeningRaw(::grpc::ClientContext* context, const ::TongsManageOpeningRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::MoveCamResponse>* AsyncMoveCamRaw(::grpc::ClientContext* context, const ::MoveCamRequest& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::MoveCamResponse>* PrepareAsyncMoveCamRaw(::grpc::ClientContext* context, const ::MoveCamRequest& request, ::grpc::CompletionQueue* cq) override;
-    const ::grpc::internal::RpcMethod rpcmethod_MoveTrans_;
-    const ::grpc::internal::RpcMethod rpcmethod_MoveRota_;
+    const ::grpc::internal::RpcMethod rpcmethod_MoveBot_;
+    const ::grpc::internal::RpcMethod rpcmethod_RotaBot_;
     const ::grpc::internal::RpcMethod rpcmethod_InstanceObject_;
     const ::grpc::internal::RpcMethod rpcmethod_TongsManageMove_;
     const ::grpc::internal::RpcMethod rpcmethod_TongsManageOpening_;
@@ -204,50 +204,50 @@ class GrpcService final {
    public:
     Service();
     virtual ~Service();
-    virtual ::grpc::Status MoveTrans(::grpc::ServerContext* context, const ::MoveTransRequest* request, ::MoveTransResponse* response);
-    virtual ::grpc::Status MoveRota(::grpc::ServerContext* context, const ::MoveRotaRequest* request, ::MoveRotaResponse* response);
+    virtual ::grpc::Status MoveBot(::grpc::ServerContext* context, const ::MoveBotRequest* request, ::MoveBotResponse* response);
+    virtual ::grpc::Status RotaBot(::grpc::ServerContext* context, const ::RotaBotRequest* request, ::RotaBotResponse* response);
     virtual ::grpc::Status InstanceObject(::grpc::ServerContext* context, const ::InstanceObjectRequest* request, ::InstanceObjectResponse* response);
     virtual ::grpc::Status TongsManageMove(::grpc::ServerContext* context, const ::TongsManageMoveRequest* request, ::TongsManageMoveResponse* response);
     virtual ::grpc::Status TongsManageOpening(::grpc::ServerContext* context, const ::TongsManageOpeningRequest* request, ::TongsManageOpeningResponse* response);
     virtual ::grpc::Status MoveCam(::grpc::ServerContext* context, const ::MoveCamRequest* request, ::MoveCamResponse* response);
   };
   template <class BaseClass>
-  class WithAsyncMethod_MoveTrans : public BaseClass {
+  class WithAsyncMethod_MoveBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_MoveTrans() {
+    WithAsyncMethod_MoveBot() {
       ::grpc::Service::MarkMethodAsync(0);
     }
-    ~WithAsyncMethod_MoveTrans() override {
+    ~WithAsyncMethod_MoveBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MoveTrans(::grpc::ServerContext* /*context*/, const ::MoveTransRequest* /*request*/, ::MoveTransResponse* /*response*/) override {
+    ::grpc::Status MoveBot(::grpc::ServerContext* /*context*/, const ::MoveBotRequest* /*request*/, ::MoveBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestMoveTrans(::grpc::ServerContext* context, ::MoveTransRequest* request, ::grpc::ServerAsyncResponseWriter< ::MoveTransResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestMoveBot(::grpc::ServerContext* context, ::MoveBotRequest* request, ::grpc::ServerAsyncResponseWriter< ::MoveBotResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithAsyncMethod_MoveRota : public BaseClass {
+  class WithAsyncMethod_RotaBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithAsyncMethod_MoveRota() {
+    WithAsyncMethod_RotaBot() {
       ::grpc::Service::MarkMethodAsync(1);
     }
-    ~WithAsyncMethod_MoveRota() override {
+    ~WithAsyncMethod_RotaBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MoveRota(::grpc::ServerContext* /*context*/, const ::MoveRotaRequest* /*request*/, ::MoveRotaResponse* /*response*/) override {
+    ::grpc::Status RotaBot(::grpc::ServerContext* /*context*/, const ::RotaBotRequest* /*request*/, ::RotaBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestMoveRota(::grpc::ServerContext* context, ::MoveRotaRequest* request, ::grpc::ServerAsyncResponseWriter< ::MoveRotaResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestRotaBot(::grpc::ServerContext* context, ::RotaBotRequest* request, ::grpc::ServerAsyncResponseWriter< ::RotaBotResponse>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -331,60 +331,60 @@ class GrpcService final {
       ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_MoveTrans<WithAsyncMethod_MoveRota<WithAsyncMethod_InstanceObject<WithAsyncMethod_TongsManageMove<WithAsyncMethod_TongsManageOpening<WithAsyncMethod_MoveCam<Service > > > > > > AsyncService;
+  typedef WithAsyncMethod_MoveBot<WithAsyncMethod_RotaBot<WithAsyncMethod_InstanceObject<WithAsyncMethod_TongsManageMove<WithAsyncMethod_TongsManageOpening<WithAsyncMethod_MoveCam<Service > > > > > > AsyncService;
   template <class BaseClass>
-  class WithCallbackMethod_MoveTrans : public BaseClass {
+  class WithCallbackMethod_MoveBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_MoveTrans() {
+    WithCallbackMethod_MoveBot() {
       ::grpc::Service::MarkMethodCallback(0,
-          new ::grpc::internal::CallbackUnaryHandler< ::MoveTransRequest, ::MoveTransResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::MoveBotRequest, ::MoveBotResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::MoveTransRequest* request, ::MoveTransResponse* response) { return this->MoveTrans(context, request, response); }));}
-    void SetMessageAllocatorFor_MoveTrans(
-        ::grpc::MessageAllocator< ::MoveTransRequest, ::MoveTransResponse>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::MoveBotRequest* request, ::MoveBotResponse* response) { return this->MoveBot(context, request, response); }));}
+    void SetMessageAllocatorFor_MoveBot(
+        ::grpc::MessageAllocator< ::MoveBotRequest, ::MoveBotResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::MoveTransRequest, ::MoveTransResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::MoveBotRequest, ::MoveBotResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_MoveTrans() override {
+    ~WithCallbackMethod_MoveBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MoveTrans(::grpc::ServerContext* /*context*/, const ::MoveTransRequest* /*request*/, ::MoveTransResponse* /*response*/) override {
+    ::grpc::Status MoveBot(::grpc::ServerContext* /*context*/, const ::MoveBotRequest* /*request*/, ::MoveBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* MoveTrans(
-      ::grpc::CallbackServerContext* /*context*/, const ::MoveTransRequest* /*request*/, ::MoveTransResponse* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* MoveBot(
+      ::grpc::CallbackServerContext* /*context*/, const ::MoveBotRequest* /*request*/, ::MoveBotResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_MoveRota : public BaseClass {
+  class WithCallbackMethod_RotaBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_MoveRota() {
+    WithCallbackMethod_RotaBot() {
       ::grpc::Service::MarkMethodCallback(1,
-          new ::grpc::internal::CallbackUnaryHandler< ::MoveRotaRequest, ::MoveRotaResponse>(
+          new ::grpc::internal::CallbackUnaryHandler< ::RotaBotRequest, ::RotaBotResponse>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::MoveRotaRequest* request, ::MoveRotaResponse* response) { return this->MoveRota(context, request, response); }));}
-    void SetMessageAllocatorFor_MoveRota(
-        ::grpc::MessageAllocator< ::MoveRotaRequest, ::MoveRotaResponse>* allocator) {
+                   ::grpc::CallbackServerContext* context, const ::RotaBotRequest* request, ::RotaBotResponse* response) { return this->RotaBot(context, request, response); }));}
+    void SetMessageAllocatorFor_RotaBot(
+        ::grpc::MessageAllocator< ::RotaBotRequest, ::RotaBotResponse>* allocator) {
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
-      static_cast<::grpc::internal::CallbackUnaryHandler< ::MoveRotaRequest, ::MoveRotaResponse>*>(handler)
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::RotaBotRequest, ::RotaBotResponse>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_MoveRota() override {
+    ~WithCallbackMethod_RotaBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MoveRota(::grpc::ServerContext* /*context*/, const ::MoveRotaRequest* /*request*/, ::MoveRotaResponse* /*response*/) override {
+    ::grpc::Status RotaBot(::grpc::ServerContext* /*context*/, const ::RotaBotRequest* /*request*/, ::RotaBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* MoveRota(
-      ::grpc::CallbackServerContext* /*context*/, const ::MoveRotaRequest* /*request*/, ::MoveRotaResponse* /*response*/)  { return nullptr; }
+    virtual ::grpc::ServerUnaryReactor* RotaBot(
+      ::grpc::CallbackServerContext* /*context*/, const ::RotaBotRequest* /*request*/, ::RotaBotResponse* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
   class WithCallbackMethod_InstanceObject : public BaseClass {
@@ -494,38 +494,38 @@ class GrpcService final {
     virtual ::grpc::ServerUnaryReactor* MoveCam(
       ::grpc::CallbackServerContext* /*context*/, const ::MoveCamRequest* /*request*/, ::MoveCamResponse* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_MoveTrans<WithCallbackMethod_MoveRota<WithCallbackMethod_InstanceObject<WithCallbackMethod_TongsManageMove<WithCallbackMethod_TongsManageOpening<WithCallbackMethod_MoveCam<Service > > > > > > CallbackService;
+  typedef WithCallbackMethod_MoveBot<WithCallbackMethod_RotaBot<WithCallbackMethod_InstanceObject<WithCallbackMethod_TongsManageMove<WithCallbackMethod_TongsManageOpening<WithCallbackMethod_MoveCam<Service > > > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
-  class WithGenericMethod_MoveTrans : public BaseClass {
+  class WithGenericMethod_MoveBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_MoveTrans() {
+    WithGenericMethod_MoveBot() {
       ::grpc::Service::MarkMethodGeneric(0);
     }
-    ~WithGenericMethod_MoveTrans() override {
+    ~WithGenericMethod_MoveBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MoveTrans(::grpc::ServerContext* /*context*/, const ::MoveTransRequest* /*request*/, ::MoveTransResponse* /*response*/) override {
+    ::grpc::Status MoveBot(::grpc::ServerContext* /*context*/, const ::MoveBotRequest* /*request*/, ::MoveBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
   };
   template <class BaseClass>
-  class WithGenericMethod_MoveRota : public BaseClass {
+  class WithGenericMethod_RotaBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithGenericMethod_MoveRota() {
+    WithGenericMethod_RotaBot() {
       ::grpc::Service::MarkMethodGeneric(1);
     }
-    ~WithGenericMethod_MoveRota() override {
+    ~WithGenericMethod_RotaBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MoveRota(::grpc::ServerContext* /*context*/, const ::MoveRotaRequest* /*request*/, ::MoveRotaResponse* /*response*/) override {
+    ::grpc::Status RotaBot(::grpc::ServerContext* /*context*/, const ::RotaBotRequest* /*request*/, ::RotaBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -599,42 +599,42 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
-  class WithRawMethod_MoveTrans : public BaseClass {
+  class WithRawMethod_MoveBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_MoveTrans() {
+    WithRawMethod_MoveBot() {
       ::grpc::Service::MarkMethodRaw(0);
     }
-    ~WithRawMethod_MoveTrans() override {
+    ~WithRawMethod_MoveBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MoveTrans(::grpc::ServerContext* /*context*/, const ::MoveTransRequest* /*request*/, ::MoveTransResponse* /*response*/) override {
+    ::grpc::Status MoveBot(::grpc::ServerContext* /*context*/, const ::MoveBotRequest* /*request*/, ::MoveBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestMoveTrans(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestMoveBot(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(0, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
-  class WithRawMethod_MoveRota : public BaseClass {
+  class WithRawMethod_RotaBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawMethod_MoveRota() {
+    WithRawMethod_RotaBot() {
       ::grpc::Service::MarkMethodRaw(1);
     }
-    ~WithRawMethod_MoveRota() override {
+    ~WithRawMethod_RotaBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MoveRota(::grpc::ServerContext* /*context*/, const ::MoveRotaRequest* /*request*/, ::MoveRotaResponse* /*response*/) override {
+    ::grpc::Status RotaBot(::grpc::ServerContext* /*context*/, const ::RotaBotRequest* /*request*/, ::RotaBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    void RequestMoveRota(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+    void RequestRotaBot(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(1, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
@@ -719,47 +719,47 @@ class GrpcService final {
     }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_MoveTrans : public BaseClass {
+  class WithRawCallbackMethod_MoveBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_MoveTrans() {
+    WithRawCallbackMethod_MoveBot() {
       ::grpc::Service::MarkMethodRawCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->MoveTrans(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->MoveBot(context, request, response); }));
     }
-    ~WithRawCallbackMethod_MoveTrans() override {
+    ~WithRawCallbackMethod_MoveBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MoveTrans(::grpc::ServerContext* /*context*/, const ::MoveTransRequest* /*request*/, ::MoveTransResponse* /*response*/) override {
+    ::grpc::Status MoveBot(::grpc::ServerContext* /*context*/, const ::MoveBotRequest* /*request*/, ::MoveBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* MoveTrans(
+    virtual ::grpc::ServerUnaryReactor* MoveBot(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_MoveRota : public BaseClass {
+  class WithRawCallbackMethod_RotaBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_MoveRota() {
+    WithRawCallbackMethod_RotaBot() {
       ::grpc::Service::MarkMethodRawCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->MoveRota(context, request, response); }));
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->RotaBot(context, request, response); }));
     }
-    ~WithRawCallbackMethod_MoveRota() override {
+    ~WithRawCallbackMethod_RotaBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
-    ::grpc::Status MoveRota(::grpc::ServerContext* /*context*/, const ::MoveRotaRequest* /*request*/, ::MoveRotaResponse* /*response*/) override {
+    ::grpc::Status RotaBot(::grpc::ServerContext* /*context*/, const ::RotaBotRequest* /*request*/, ::RotaBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
-    virtual ::grpc::ServerUnaryReactor* MoveRota(
+    virtual ::grpc::ServerUnaryReactor* RotaBot(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -851,58 +851,58 @@ class GrpcService final {
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_MoveTrans : public BaseClass {
+  class WithStreamedUnaryMethod_MoveBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_MoveTrans() {
+    WithStreamedUnaryMethod_MoveBot() {
       ::grpc::Service::MarkMethodStreamed(0,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::MoveTransRequest, ::MoveTransResponse>(
+          ::MoveBotRequest, ::MoveBotResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::MoveTransRequest, ::MoveTransResponse>* streamer) {
-                       return this->StreamedMoveTrans(context,
+                     ::MoveBotRequest, ::MoveBotResponse>* streamer) {
+                       return this->StreamedMoveBot(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_MoveTrans() override {
+    ~WithStreamedUnaryMethod_MoveBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status MoveTrans(::grpc::ServerContext* /*context*/, const ::MoveTransRequest* /*request*/, ::MoveTransResponse* /*response*/) override {
+    ::grpc::Status MoveBot(::grpc::ServerContext* /*context*/, const ::MoveBotRequest* /*request*/, ::MoveBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedMoveTrans(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::MoveTransRequest,::MoveTransResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedMoveBot(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::MoveBotRequest,::MoveBotResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
-  class WithStreamedUnaryMethod_MoveRota : public BaseClass {
+  class WithStreamedUnaryMethod_RotaBot : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithStreamedUnaryMethod_MoveRota() {
+    WithStreamedUnaryMethod_RotaBot() {
       ::grpc::Service::MarkMethodStreamed(1,
         new ::grpc::internal::StreamedUnaryHandler<
-          ::MoveRotaRequest, ::MoveRotaResponse>(
+          ::RotaBotRequest, ::RotaBotResponse>(
             [this](::grpc::ServerContext* context,
                    ::grpc::ServerUnaryStreamer<
-                     ::MoveRotaRequest, ::MoveRotaResponse>* streamer) {
-                       return this->StreamedMoveRota(context,
+                     ::RotaBotRequest, ::RotaBotResponse>* streamer) {
+                       return this->StreamedRotaBot(context,
                          streamer);
                   }));
     }
-    ~WithStreamedUnaryMethod_MoveRota() override {
+    ~WithStreamedUnaryMethod_RotaBot() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable regular version of this method
-    ::grpc::Status MoveRota(::grpc::ServerContext* /*context*/, const ::MoveRotaRequest* /*request*/, ::MoveRotaResponse* /*response*/) override {
+    ::grpc::Status RotaBot(::grpc::ServerContext* /*context*/, const ::RotaBotRequest* /*request*/, ::RotaBotResponse* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     // replace default version of method with streamed unary
-    virtual ::grpc::Status StreamedMoveRota(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::MoveRotaRequest,::MoveRotaResponse>* server_unary_streamer) = 0;
+    virtual ::grpc::Status StreamedRotaBot(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::RotaBotRequest,::RotaBotResponse>* server_unary_streamer) = 0;
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_InstanceObject : public BaseClass {
@@ -1012,9 +1012,9 @@ class GrpcService final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedMoveCam(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::MoveCamRequest,::MoveCamResponse>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_MoveTrans<WithStreamedUnaryMethod_MoveRota<WithStreamedUnaryMethod_InstanceObject<WithStreamedUnaryMethod_TongsManageMove<WithStreamedUnaryMethod_TongsManageOpening<WithStreamedUnaryMethod_MoveCam<Service > > > > > > StreamedUnaryService;
+  typedef WithStreamedUnaryMethod_MoveBot<WithStreamedUnaryMethod_RotaBot<WithStreamedUnaryMethod_InstanceObject<WithStreamedUnaryMethod_TongsManageMove<WithStreamedUnaryMethod_TongsManageOpening<WithStreamedUnaryMethod_MoveCam<Service > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_MoveTrans<WithStreamedUnaryMethod_MoveRota<WithStreamedUnaryMethod_InstanceObject<WithStreamedUnaryMethod_TongsManageMove<WithStreamedUnaryMethod_TongsManageOpening<WithStreamedUnaryMethod_MoveCam<Service > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_MoveBot<WithStreamedUnaryMethod_RotaBot<WithStreamedUnaryMethod_InstanceObject<WithStreamedUnaryMethod_TongsManageMove<WithStreamedUnaryMethod_TongsManageOpening<WithStreamedUnaryMethod_MoveCam<Service > > > > > > StreamedService;
 };
 
 

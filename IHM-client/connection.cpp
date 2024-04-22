@@ -8,7 +8,6 @@ Connection::Connection(const char *dbName, QWidget *parent) :
         QMainWindow(parent), ui(new Ui::Connection), m_db(nullptr), m_dbName(dbName) {
     ui->setupUi(this);
     connect(ui->pb_connect, &QPushButton::clicked, this, &Connection::on_pb_connect_clicked);
-
 }
 
 Connection::~Connection() {

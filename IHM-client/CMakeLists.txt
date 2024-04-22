@@ -37,9 +37,9 @@ set(PROJECT_SOURCES
         connection.h
         connection.ui
         com.grpc.pb.h
+        com.grpc.pb.cc
         com.pb.h
         com.pb.cc
-        com.grpc.pb.cc
 )
 
 

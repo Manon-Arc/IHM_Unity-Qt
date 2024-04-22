@@ -1,29 +1,27 @@
 syntax = "proto3";
 
 service GrpcService {
-    rpc MoveTrans(MoveTransRequest) returns (MoveTransResponse);
-    rpc MoveRota(MoveRotaRequest) returns (MoveRotaResponse);
+    rpc MoveBot(MoveBotRequest) returns (MoveBotResponse);
+    rpc RotaBot(RotaBotRequest) returns (RotaBotResponse);
     rpc InstanceObject(InstanceObjectRequest) returns (InstanceObjectResponse);
     rpc TongsManageMove(TongsManageMoveRequest) returns (TongsManageMoveResponse);
     rpc TongsManageOpening(TongsManageOpeningRequest) returns (TongsManageOpeningResponse);
     rpc MoveCam(MoveCamRequest) returns (MoveCamResponse);
 }
 
-message MoveTransRequest {
+message MoveBotRequest {
     string dir = 1;
-    int32 distance = 2;
 }
 
-message MoveTransResponse {
+message MoveBotResponse {
     string message = 1;
 }
 
-message MoveRotaRequest {
+message RotaBotRequest {
     string dir = 1;
-    int32 angle = 2;
 }
 
-message MoveRotaResponse {
+message RotaBotResponse {
     string message = 1;
 }
 
@@ -36,8 +34,8 @@ message InstanceObjectResponse {
 }
 
 message TongsManageMoveRequest {
-    int32 joinId = 1;
-    bool dir = 2;
+    string joinName = 1;
+    int32 dir = 2;
 }
 
 message TongsManageMoveResponse {
