@@ -42,6 +42,22 @@ public slots:
     void openTongs();
 
     void closeTongs();
+
+    void moveAxePosOne();
+
+    void moveAxeNegOne();
+
+    void moveAxePosTwo();
+
+    void moveAxeNegTwo();
+
+    void moveAxePosThree();
+
+    void moveAxeNegThree();
+
+    void stopMove();
+
+
 private:
     Ui::MainWindow *ui;
     GrpcServiceClient *m_grpcClient = nullptr;
@@ -57,10 +73,13 @@ private:
     QPushButton *m_button_x2;
     QPushButton *m_button_x1_2;
     QPushButton *m_button_x2_2;
+    QPushButton *m_button_x1_3;
+    QPushButton *m_button_x2_3;
     QPushButton *m_button_cube;
     QPushButton *m_button_sphere;
 
     QPushButton *m_button_cylinder;
+
 };
 
 #endif // MAINWINDOW_H

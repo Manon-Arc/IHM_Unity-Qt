@@ -23,12 +23,15 @@ MainWindow::MainWindow(QWidget *parent)
     m_button_x2 = ui->x2;
     m_button_x1_2 = ui->X1_2;
     m_button_x2_2 = ui->x2_2;
+    m_button_x1_3 = ui->X1_3;
+    m_button_x2_3 = ui->x2_3;
     m_button_cube = ui->Cube;
     m_button_sphere = ui->Sphere;
     m_button_cylinder = ui->Cylindre;
 
 
-    connect(m_button_up, &QPushButton::clicked, this, &MainWindow::moveUp);
+    connect(m_button_up, &QPushButton::pressed, this, &MainWindow::moveUp);
+    connect(m_button_up, &QPushButton::released, this, &MainWindow::stopMove);
     connect(m_button_down, &QPushButton::clicked, this, &MainWindow::moveDown);
     connect(m_button_left, &QPushButton::clicked, this, &MainWindow::moveLeft);
     connect(m_button_right, &QPushButton::clicked, this, &MainWindow::moveRight);
@@ -38,10 +41,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(m_button_cylinder, &QPushButton::clicked, this, &MainWindow::createCylinder);
     connect(m_button_open, &QPushButton::clicked, this, &MainWindow::openTongs);
     connect(m_button_close, &QPushButton::clicked, this, &MainWindow::closeTongs);
-    connect(m_button_x1, &QPushButton::clicked, this, &MainWindow::openTongs);
-    connect(m_button_x2, &QPushButton::clicked, this, &MainWindow::closeTongs);
-    connect(m_button_x1_2, &QPushButton::clicked, this, &MainWindow::openTongs);
-    connect(m_button_x2_2, &QPushButton::clicked, this, &MainWindow::closeTongs);
+    connect(m_button_x1, &QPushButton::clicked, this, &MainWindow::moveAxeNegOne);
+    connect(m_button_x2, &QPushButton::clicked, this, &MainWindow::moveAxePosOne);
+    connect(m_button_x1_2, &QPushButton::clicked, this, &MainWindow::moveAxeNegTwo);
+    connect(m_button_x2_2, &QPushButton::clicked, this, &MainWindow::moveAxePosTwo);
+    connect(m_button_x1_3, &QPushButton::clicked, this, &MainWindow::moveAxeNegThree);
+    connect(m_button_x2_3, &QPushButton::clicked, this, &MainWindow::moveAxePosThree);
 }
 
 MainWindow::~MainWindow() {
@@ -68,6 +73,12 @@ void MainWindow::moveLeft() {
 void MainWindow::moveRight() {
     m_grpcClient->RotaBot("d");
     qDebug("Rotation vers la droite");
+}
+
+void MainWindow::stopMove() {
+    qDebug("Arrêt du déplacement");
+    m_grpcClient->MoveBot("stop");
+    m_grpcClient->RotaBot("stop");
 }
 
 void MainWindow::moveCam(int value) {
@@ -99,4 +110,34 @@ void MainWindow::openTongs() {
 void MainWindow::closeTongs() {
     m_grpcClient->TongsManageOpening(false);
     qDebug() << "Fermeture des pinces";
+}
+
+void MainWindow::moveAxePosOne() {
+    m_grpcClient->TongsManageMove("axe1", 1);
+    qDebug() << "Déplacement de l'axe 1 vers la position 1";
+}
+
+void MainWindow::moveAxeNegOne() {
+    m_grpcClient->TongsManageMove("axe1", -1);
+    qDebug() << "Déplacement de l'axe 1 vers la position -1";
+}
+
+void MainWindow::moveAxePosTwo() {
+    m_grpcClient->TongsManageMove("axe2", 1);
+    qDebug() << "Déplacement de l'axe 2 vers la position 1";
+}
+
+void MainWindow::moveAxeNegTwo() {
+    m_grpcClient->TongsManageMove("axe2", -1);
+    qDebug() << "Déplacement de l'axe 2 vers la position -1";
+}
+
+void MainWindow::moveAxePosThree() {
+    m_grpcClient->TongsManageMove("pince", 1);
+    qDebug() << "Déplacement de l'axe 3 vers la position 1";
+}
+
+void MainWindow::moveAxeNegThree() {
+    m_grpcClient->TongsManageMove("pince", -1);
+    qDebug() << "Déplacement de l'axe 3 vers la position -1";
 }
