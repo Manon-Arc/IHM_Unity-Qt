@@ -40,6 +40,9 @@ set(PROJECT_SOURCES
         com.grpc.pb.cc
         com.pb.h
         com.pb.cc
+        register.cpp
+        register.h
+        register.ui
 )
 
 
