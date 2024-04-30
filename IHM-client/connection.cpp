@@ -1,6 +1,7 @@
 #include "connection.h"
 #include "ui_connection.h"
 #include "mainwindow.h"
+#include "register.h"
 #include <sqlite3.h>
 #include <QMessageBox>
 
@@ -8,6 +9,14 @@ Connection::Connection(const char *dbName, QWidget *parent) :
         QMainWindow(parent), ui(new Ui::Connection), m_db(nullptr), m_dbName(dbName) {
     ui->setupUi(this);
     connect(ui->pb_connect, &QPushButton::clicked, this, &Connection::on_pb_connect_clicked);
+    connect(ui->pb_signup, &QPushButton::clicked, [this]() {
+        if (m_register == nullptr) {
+            m_register = new Register("db", this);
+        }
+        this->close();
+        this->hide();
+        m_register->show();
+    });
 }
 
 Connection::~Connection() {

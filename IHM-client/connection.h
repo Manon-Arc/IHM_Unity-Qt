@@ -5,6 +5,7 @@
 #include <QCoreApplication>
 #include <sqlite3.h>
 #include "mainwindow.h"
+#include "register.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -25,13 +26,14 @@ public:
     bool isOpen() const;
 
     bool executeQuery(const QString& queryString, std::function<void(bool, const QStringList&)> callback);
+    MainWindow *m_mainWindow = nullptr;
 private slots:
     void on_pb_connect_clicked();
 private:
     sqlite3* m_db;
     QString m_dbName;
     Ui::Connection *ui;
-    MainWindow *m_mainWindow = nullptr;
+    Register *m_register = nullptr;
 };
 
 #endif // CONNECTION_H
