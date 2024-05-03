@@ -14,7 +14,7 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets
         Protobuf
         Grpc
 )
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools )
 qt_standard_project_setup()
 
 find_library(SQLITE3_LIBRARY sqlite3)
@@ -22,6 +22,9 @@ find_library(SQLITE3_LIBRARY sqlite3)
 set(DATABASE_FILE "db")
 configure_file(${DATABASE_FILE} ${CMAKE_CURRENT_BINARY_DIR}/${DATABASE_FILE} COPYONLY)
 
+
+find_package(PkgConfig REQUIRED)
+pkg_search_module(SODIUM REQUIRED libsodium)
 
 set(TS_FILES IHM_en_US.ts)
 
@@ -43,6 +46,8 @@ set(PROJECT_SOURCES
         register.cpp
         register.h
         register.ui
+        hash.cpp
+        hash.h
 )
 
 
@@ -83,7 +88,9 @@ target_link_libraries(IHM PRIVATE
         Qt${QT_VERSION_MAJOR}::Widgets
         gRPC::grpc++
         ${SQLITE3_LIBRARY}
+        ${SODIUM_LIBRARIES}
 )
+target_include_directories(IHM PRIVATE ${SODIUM_INCLUDE_DIRS})
 
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.

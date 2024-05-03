@@ -7,7 +7,7 @@
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    m_grpcClient = new GrpcServiceClient(grpc::CreateChannel("10.33.73.161:50051", grpc::InsecureChannelCredentials()));
+    m_grpcClient = new GrpcServiceClient(grpc::CreateChannel("192.168.1.86:50051", grpc::InsecureChannelCredentials()));
 
     m_button_up = ui->Top;
     m_button_down = ui->Bottom;
