@@ -6,6 +6,7 @@
 #include <sqlite3.h>
 #include "mainwindow.h"
 #include "register.h"
+#include "hash.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -34,6 +35,7 @@ private:
     QString m_dbName;
     Ui::Connection *ui;
     Register *m_register = nullptr;
+    Hash *m_hash;
 };
 
 #endif // CONNECTION_H

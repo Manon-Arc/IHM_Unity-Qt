@@ -13,6 +13,7 @@
 Register::Register(const char *dbName, QWidget *parent) :
         QDialog(parent), ui(new Ui::Register), m_db(nullptr), m_dbName(dbName), m_parent(parent) {
     ui->setupUi(this);
+    m_hash = new Hash();
     connect(ui->pb_validate, &QPushButton::clicked, this, &Register::on_pb_validate_clicked);
     connect(ui->pb_signin, &QPushButton::clicked, this, &Register::on_pb_signin_clicked);
 }
@@ -111,9 +112,10 @@ void Register::on_pb_validate_clicked() {
             }
         })) return;
 
+        QString hashPassword = m_hash->hashPassword(password.toStdString().c_str());
 
         queryString = QString("INSERT INTO users (firstname, name, username, password) VALUES ('%1', '%2', '%3', '%4')")
-                .arg(firstname).arg(name).arg(username).arg(password);
+                .arg(firstname).arg(name).arg(username).arg(hashPassword);
         this->executeQuery(queryString, [this](bool success, const QStringList& userData) {
             if (success) {
                 if (m_mainWindow == nullptr) {

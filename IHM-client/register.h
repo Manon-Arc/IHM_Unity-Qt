@@ -9,6 +9,7 @@
 #include <QCoreApplication>
 #include <sqlite3.h>
 #include "mainwindow.h"
+#include "hash.h"
 #include <QDialog>
 
 
@@ -43,6 +44,7 @@ private:
     sqlite3* m_db;
     QString m_dbName;
     QWidget *m_parent = nullptr;
+    Hash *m_hash;
 };
 
 

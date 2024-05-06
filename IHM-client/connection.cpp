@@ -8,10 +8,11 @@
 Connection::Connection(const char *dbName, QWidget *parent) :
         QMainWindow(parent), ui(new Ui::Connection), m_db(nullptr), m_dbName(dbName) {
     ui->setupUi(this);
+    m_hash = new Hash();
     connect(ui->pb_connect, &QPushButton::clicked, this, &Connection::on_pb_connect_clicked);
     connect(ui->pb_signup, &QPushButton::clicked, [this]() {
         if (m_register == nullptr) {
-            m_register = new Register("db", this);
+            m_register = new Register("../db", this);
         }
         this->close();
         this->hide();
@@ -68,19 +69,20 @@ bool Connection::executeQuery(const QString& queryString, std::function<void(boo
 
 void Connection::on_pb_connect_clicked() {
     QString username = ui->le_login->text();
-    QString password = ui->le_password->text();
 
     if (this->open()) {
-        QString queryString = QString("SELECT * FROM users WHERE username='%1' AND password='%2'")
-                .arg(username).arg(password);
+        QString queryString = QString("SELECT * FROM users WHERE username='%1'")
+                .arg(username);
         this->executeQuery(queryString, [this](bool success, const QStringList& userData) {
             if (success) {
                 if (!userData.isEmpty()) {
-                    // Utilisateur trouvé dans la base de données, récupérez les données de l'utilisateur
-                    QString username = userData.value(0);
-                    QString email = userData.value(1);
-                    // Faites quelque chose avec les données de l'utilisateur
-                    qDebug() << "Utilisateur trouvé:" << username << email;
+                    QString un = userData.value(1);
+                    QString passwd = userData.value(2);
+                    qDebug() << "Utilisateur trouvé:" << un;
+                    if (m_hash->verifyPassword(passwd, ui->le_password->text())) {
+                        QMessageBox::warning(this, "Error", "Invalid password!");
+                        return;
+                    }
                     if (m_mainWindow == nullptr) {
                         m_mainWindow = new MainWindow();
                         this->close();
