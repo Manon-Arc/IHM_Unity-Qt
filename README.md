@@ -2,11 +2,24 @@
 
 This repository contains the QT client of the [IHM project](https://github.com/Manon-Arc/projetDev_IHM).
 
-## 🔧 I. Prerequisites :
+## 📌 Table of Contents :
+   
+I. [Badges](#🎯-badges)
+
+II. [Prerequisites](#🔧-prerequisites-)
+
+III. [Installation](#💻-how-to-install-the-project-)
+
+## 🎯 Badges :
+
+[![C++ logo](https://img.shields.io/badge/Language-C++-pink)](https://learn.microsoft.com/fr-fr/cpp/?view=msvc-170)
+[![Qt logo](https://img.shields.io/badge/Software-Qt-green)](https://www.qt.io)
+
+## 🔧 Prerequisites :
 
 - [Qt](https://www.qt.io/download) installed on your system.
 
-## 💻 II. How to Install the Project :
+## 💻 How to Install the Project :
 
 ### 1. Installation :
 
@@ -19,7 +32,6 @@ This repository contains the QT client of the [IHM project](https://github.com/M
 
 
 ### 2. Lauch :
-
 
 
 😉 Enjoy !
