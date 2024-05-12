@@ -2,17 +2,15 @@
 #include "ui_connection.h"
 #include "mainwindow.h"
 #include "register.h"
-#include <sqlite3.h>
 #include <QMessageBox>
 
-Connection::Connection(const char *dbName, QWidget *parent) :
-        QMainWindow(parent), ui(new Ui::Connection), m_db(nullptr), m_dbName(dbName) {
+Connection::Connection(Db *db, QWidget *parent) :
+        QMainWindow(parent), ui(new Ui::Connection), m_db(db) {
     ui->setupUi(this);
     m_hash = new Hash();
-    connect(ui->pb_connect, &QPushButton::clicked, this, &Connection::on_pb_connect_clicked);
-    connect(ui->pb_signup, &QPushButton::clicked, [this]() {
+    connect(ui->pb_signup, &QPushButton::released, [this]() {
         if (m_register == nullptr) {
-            m_register = new Register("../db", this);
+            m_register = new Register(m_db, this);
         }
         this->close();
         this->hide();
@@ -21,59 +19,22 @@ Connection::Connection(const char *dbName, QWidget *parent) :
 }
 
 Connection::~Connection() {
-    delete m_mainWindow;
+    qDebug() << "Connection::~Connection()";
     delete ui;
+    delete m_db;
     close();
-}
-
-bool Connection::open() {
-    return sqlite3_open(m_dbName.toStdString().c_str(), &m_db) == SQLITE_OK;
-}
-
-void Connection::close() {
-    if (m_db)
-        sqlite3_close(m_db);
-}
-
-bool Connection::isOpen() const {
-    return m_db != nullptr;
-}
-
-bool Connection::executeQuery(const QString& queryString, std::function<void(bool, const QStringList&)> callback) {
-    if (!isOpen()) {
-        qDebug() << "Database is not open!";
-        return false;
-    }
-
-    char* errMsg;
-    QStringList userData;
-    int result = sqlite3_exec(m_db, queryString.toStdString().c_str(),
-                              [](void* userDataPtr, int argc, char** argv, char** /*colNames*/) -> int {
-                                  QStringList* userData = reinterpret_cast<QStringList*>(userDataPtr);
-                                  for (int i = 0; i < argc; ++i) {
-                                      userData->append(argv[i]);
-                                  }
-                                  return 0;
-                              },
-                              &userData, &errMsg);
-
-    if (result != SQLITE_OK) {
-        qDebug() << "SQL error: " << errMsg;
-        sqlite3_free(errMsg);
-        return false;
-    }
-
-    callback(true, userData);
-    return true;
+    exit(0);
 }
 
 void Connection::on_pb_connect_clicked() {
+    qDebug() << "Connection::on_pb_connect_clicked()";
     QString username = ui->le_login->text();
 
-    if (this->open()) {
+    if (m_db->openDb()) {
         QString queryString = QString("SELECT * FROM users WHERE username='%1'")
                 .arg(username);
-        this->executeQuery(queryString, [this](bool success, const QStringList& userData) {
+
+        m_db->executeQuery(queryString, [this](bool success, const QStringList& userData) {
             if (success) {
                 if (!userData.isEmpty()) {
                     QString un = userData.value(1);
@@ -81,15 +42,16 @@ void Connection::on_pb_connect_clicked() {
                     qDebug() << "Utilisateur trouvé:" << un;
                     if (m_hash->verifyPassword(passwd, ui->le_password->text())) {
                         QMessageBox::warning(this, "Error", "Invalid password!");
-                        return;
+                        return false;
                     }
-                    if (m_mainWindow == nullptr) {
-                        m_mainWindow = new MainWindow();
+                    if (m_projectWindow == nullptr) {
+                        m_projectWindow = new Projects(m_db, un, this);
                         this->close();
                         this->hide();
-                        m_mainWindow->show();
+                        m_projectWindow->show();
+                        return true;
                     }
-                    return;
+                    return false;
                 } else {
                     // Utilisateur non trouvé dans la base de données
                     qDebug() << "Utilisateur non trouvé";
@@ -98,6 +60,7 @@ void Connection::on_pb_connect_clicked() {
                 // La requête a échoué
                 QMessageBox::warning(this, "Error", "Query execution failed!");
             }
+            return false;
         });
     } else {
         // Impossible d'ouvrir la connexion à la base de données

@@ -10,6 +10,8 @@
 #include <sqlite3.h>
 #include "mainwindow.h"
 #include "hash.h"
+#include "projects.h"
+#include "db.h"
 #include <QDialog>
 
 
@@ -21,7 +23,7 @@ class Register : public QDialog {
 Q_OBJECT
 
 public:
-    explicit Register(const char *dbName, QWidget *parent = nullptr);
+    explicit Register(Db *db, QWidget *parent = nullptr);
 
     ~Register() override;
 
@@ -41,10 +43,10 @@ private:
     bool executeQuery(const QString &queryString, std::function<bool(bool, const QStringList &)> callback);
 
     MainWindow *m_mainWindow = nullptr;
-    sqlite3* m_db;
-    QString m_dbName;
+    Db* m_db;
     QWidget *m_parent = nullptr;
     Hash *m_hash;
+    Projects *m_projectWindow = nullptr;
 };
 
 

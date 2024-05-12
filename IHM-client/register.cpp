@@ -7,68 +7,32 @@
 #include <QMessageBox>
 #include "register.h"
 #include "ui_register.h"
-#include "mainwindow.h"
 
 
-Register::Register(const char *dbName, QWidget *parent) :
-        QDialog(parent), ui(new Ui::Register), m_db(nullptr), m_dbName(dbName), m_parent(parent) {
+Register::Register(Db *db, QWidget *parent) :
+        QDialog(parent), ui(new Ui::Register), m_db(db), m_parent(parent) {
     ui->setupUi(this);
     m_hash = new Hash();
-    connect(ui->pb_validate, &QPushButton::clicked, this, &Register::on_pb_validate_clicked);
-    connect(ui->pb_signin, &QPushButton::clicked, this, &Register::on_pb_signin_clicked);
+        connect(ui->pb_validate, &QPushButton::clicked, this, &Register::on_pb_validate_clicked);
+        connect(ui->pb_signin, &QPushButton::clicked, this, &Register::on_pb_signin_clicked);
+    connect(this, &QDialog::finished, [this](int result) {
+        if (result == QDialog::Rejected) {
+            delete this;
+        }
+    });
 }
 
 Register::~Register() {
+    qDebug() << "Register::~Register()";
     delete ui;
+    QApplication::quit();
 }
 
 void Register::on_pb_signin_clicked() {
     if (m_parent != nullptr) {
-        this->close();
         this->hide();
         m_parent->show();
     }
-}
-
-bool Register::openDb() {
-    return sqlite3_open(m_dbName.toStdString().c_str(), &m_db) == SQLITE_OK;
-}
-
-void Register::close() {
-    if (m_db)
-        sqlite3_close(m_db);
-}
-
-bool Register::isOpen() const {
-    return m_db != nullptr;
-}
-
-
-bool Register::executeQuery(const QString& queryString, std::function<bool(bool, const QStringList&)> callback) {
-    if (!isOpen()) {
-        qDebug() << "Database is not open!";
-        return false;
-    }
-
-    char* errMsg;
-    QStringList userData;
-    int result = sqlite3_exec(m_db, queryString.toStdString().c_str(),
-                              [](void* userDataPtr, int argc, char** argv, char** /*colNames*/) -> int {
-                                  QStringList* userData = reinterpret_cast<QStringList*>(userDataPtr);
-                                  for (int i = 0; i < argc; ++i) {
-                                      userData->append(argv[i]);
-                                  }
-                                  return 0;
-                              },
-                              &userData, &errMsg);
-
-    if (result != SQLITE_OK) {
-        qDebug() << "SQL error: " << errMsg;
-        sqlite3_free(errMsg);
-        return false;
-    }
-
-    return callback(true, userData);
 }
 
 void Register::on_pb_validate_clicked() {
@@ -81,13 +45,10 @@ void Register::on_pb_validate_clicked() {
     QString username = ui->username->text();
     QString password = ui->password1->text();
 
-    if (this->openDb()) {
-
-
-
+    if (m_db->openDb()) {
         QString queryString = QString("SELECT COUNT(*) FROM users WHERE username = '%1'")
                 .arg(username);
-        if (!this->executeQuery(queryString, [this](bool success, const QStringList& userData) {
+        if (!m_db->executeQuery(queryString, [this](bool success, const QStringList& userData) {
             if (success) {
                 if (!userData.isEmpty()) {
                     // Utilisateur trouvé dans la base de données, récupérez les données de l'utilisateur
@@ -116,18 +77,17 @@ void Register::on_pb_validate_clicked() {
 
         queryString = QString("INSERT INTO users (firstname, name, username, password) VALUES ('%1', '%2', '%3', '%4')")
                 .arg(firstname).arg(name).arg(username).arg(hashPassword);
-        this->executeQuery(queryString, [this](bool success, const QStringList& userData) {
+        m_db->executeQuery(queryString, [this, &username](bool success, const QStringList& userData) {
             if (success) {
-                if (m_mainWindow == nullptr) {
-                    m_mainWindow = new MainWindow();
+                if (m_projectWindow == nullptr) {
+                    m_projectWindow = new Projects(m_db, username, this);
                 }
-                this->close();
                 this->hide();
                 if (m_parent != nullptr) {
                     m_parent->close();
                     m_parent->hide();
                 }
-                m_mainWindow->show();
+                m_projectWindow->show();
                 return true;
             } else {
                 // La requête a échoué

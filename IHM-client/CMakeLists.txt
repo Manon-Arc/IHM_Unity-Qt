@@ -19,10 +19,6 @@ qt_standard_project_setup()
 
 find_library(SQLITE3_LIBRARY sqlite3)
 
-set(DATABASE_FILE "db")
-configure_file(${DATABASE_FILE} ${CMAKE_CURRENT_BINARY_DIR}/${DATABASE_FILE} COPYONLY)
-
-
 find_package(PkgConfig REQUIRED)
 pkg_search_module(SODIUM REQUIRED libsodium)
 
@@ -48,6 +44,14 @@ set(PROJECT_SOURCES
         register.ui
         hash.cpp
         hash.h
+        projects.cpp
+        projects.h
+        projects.ui
+        createproject.cpp
+        createproject.h
+        createproject.ui
+        db.cpp
+        db.h
 )
 
 
