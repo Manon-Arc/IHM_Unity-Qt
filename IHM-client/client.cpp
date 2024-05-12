@@ -1,72 +1,89 @@
-//
-// Created by ahliko on 30/03/24.
-//
-
 #include "client.h"
 
-#include <iostream>
-#include <cstring>
-#include <thread>
-#include <exception>
+GrpcServiceClient::GrpcServiceClient(std::shared_ptr<grpc::Channel> channel)
+        : stub_(GrpcService::NewStub(channel)) {}
 
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <unistd.h>
+std::string GrpcServiceClient::MoveBot(const std::string& dir) {
+    MoveBotRequest request;
+    request.set_dir(dir);
+    MoveBotResponse response;
+    grpc::ClientContext context;
 
-
-void TCPTestClient::SendMessage(const std::string &message) {
-    if (socketConnection == -1) {
-        return;
-    }
-    try {
-        send(socketConnection, message.c_str(), message.length(), 0);
-        std::cout << "Client sent his message - should be received by server" << std::endl;
-    } catch (const std::exception &e) {
-        std::cerr << "Socket exception: " << e.what() << std::endl;
+    grpc::Status status = stub_->MoveBot(&context, request, &response);
+    if (status.ok()) {
+        return response.message();
+    } else {
+        return "RPC failed";
     }
 }
 
-void TCPTestClient::ListenForData() {
-    try {
-        struct sockaddr_in serverAddress;
-        char buffer[1024] = {0};
+std::string GrpcServiceClient::RotaBot(const std::string& dir) {
+    RotaBotRequest request;
+    request.set_dir(dir);
+    RotaBotResponse response;
+    grpc::ClientContext context;
 
-        if ((socketConnection = socket(AF_INET, SOCK_STREAM, 0)) < 0) {
-            throw std::runtime_error("Socket creation error");
-        }
-
-        serverAddress.sin_family = AF_INET;
-        serverAddress.sin_port = htons(50051);
-
-        if (inet_pton(AF_INET, "10.33.73.161", &serverAddress.sin_addr) <= 0) {
-            throw std::runtime_error("Invalid address/ Address not supported");
-        }
-
-        if (connect(socketConnection, (struct sockaddr *) &serverAddress, sizeof(serverAddress)) < 0) {
-            throw std::runtime_error("Connection Failed");
-        }
-
-        while (true) {
-            int bytesRead = read(socketConnection, buffer, 1024);
-            if (bytesRead > 0) {
-                std::cout << "Server message received as: " << buffer << std::endl;
-            }
-            std::memset(buffer, 0, sizeof(buffer));
-        }
-    } catch (const std::exception &e) {
-        std::cerr << "Socket exception: " << e.what() << std::endl;
+    grpc::Status status = stub_->RotaBot(&context, request, &response);
+    if (status.ok()) {
+        return response.message();
+    } else {
+        return "RPC failed";
     }
 }
 
-void TCPTestClient::ConnectToTcpServer() {
-    try {
-        clientReceiveThread = std::thread(&TCPTestClient::ListenForData, this);
-        clientReceiveThread.detach();
-    } catch (const std::exception &e) {
-        std::cerr << "On client connect exception: " << e.what() << std::endl;
+std::string GrpcServiceClient::InstanceObject(const std::string& object) {
+    InstanceObjectRequest request;
+    request.set_object(object);
+    InstanceObjectResponse response;
+    grpc::ClientContext context;
+
+    grpc::Status status = stub_->InstanceObject(&context, request, &response);
+    if (status.ok()) {
+        return response.message();
+    } else {
+        return "RPC failed";
     }
 }
 
-TCPTestClient::TCPTestClient() {
-    ConnectToTcpServer();
+std::string GrpcServiceClient::TongsManageMove(const std::string& joinName, int32_t dir) {
+    TongsManageMoveRequest request;
+    request.set_joinname(joinName);
+    request.set_dir(dir);
+    TongsManageMoveResponse response;
+    grpc::ClientContext context;
+
+    grpc::Status status = stub_->TongsManageMove(&context, request, &response);
+    if (status.ok()) {
+        return response.message();
+    } else {
+        return "RPC failed";
+    }
+}
+
+std::string GrpcServiceClient::TongsManageOpening(bool move) {
+    TongsManageOpeningRequest request;
+    request.set_move(move);
+    TongsManageOpeningResponse response;
+    grpc::ClientContext context;
+
+    grpc::Status status = stub_->TongsManageOpening(&context, request, &response);
+    if (status.ok()) {
+        return response.message();
+    } else {
+        return "RPC failed";
+    }
+}
+
+std::string GrpcServiceClient::MoveCam(int32_t distance) {
+    MoveCamRequest request;
+    request.set_distance(distance);
+    MoveCamResponse response;
+    grpc::ClientContext context;
+
+    grpc::Status status = stub_->MoveCam(&context, request, &response);
+    if (status.ok()) {
+        return response.message();
+    } else {
+        return "RPC failed";
+    }
 }

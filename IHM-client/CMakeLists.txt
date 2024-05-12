@@ -9,10 +9,18 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets LinguistTools)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets
+        LinguistTools
+        Protobuf
+        Grpc
+)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets LinguistTools )
 qt_standard_project_setup()
 
+find_library(SQLITE3_LIBRARY sqlite3)
+
+find_package(PkgConfig REQUIRED)
+pkg_search_module(SODIUM REQUIRED libsodium)
 
 set(TS_FILES IHM_en_US.ts)
 
@@ -24,9 +32,30 @@ set(PROJECT_SOURCES
         ${TS_FILES}
         client.cpp
         client.h
+        connection.cpp
+        connection.h
+        connection.ui
+        com.grpc.pb.h
+        com.grpc.pb.cc
+        com.pb.h
+        com.pb.cc
+        register.cpp
+        register.h
+        register.ui
+        hash.cpp
+        hash.h
+        projects.cpp
+        projects.h
+        projects.ui
+        createproject.cpp
+        createproject.h
+        createproject.ui
+        db.cpp
+        db.h
 )
 
 
+find_package(gRPC CONFIG REQUIRED)
 
 
 
@@ -35,6 +64,7 @@ if (${QT_VERSION_MAJOR} GREATER_EQUAL 6)
             MANUAL_FINALIZATION
             ${PROJECT_SOURCES}
             connection.h connection.cpp
+
     )
     # Define target properties for Android with Qt 6 as:
     #    set_property(TARGET IHM APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -60,7 +90,11 @@ endif ()
 
 target_link_libraries(IHM PRIVATE
         Qt${QT_VERSION_MAJOR}::Widgets
+        gRPC::grpc++
+        ${SQLITE3_LIBRARY}
+        ${SODIUM_LIBRARIES}
 )
+target_include_directories(IHM PRIVATE ${SODIUM_INCLUDE_DIRS})
 
 
 # Qt for iOS sets MACOSX_BUNDLE_GUI_IDENTIFIER automatically since Qt 6.1.
