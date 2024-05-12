@@ -13,6 +13,9 @@
 Projects::Projects(Db *db, QString username, QWidget *parent) :
         QDialog(parent), ui(new Ui::Projects), m_db(db), m_username(username) {
     ui->setupUi(this);
+    ui->label_username->setText("Welcome " + m_username + " !");
+    ui->label_username->setAlignment(Qt::AlignCenter);
+    ui->label_username->adjustSize();
     connect(ui->tableWidget, &QTableWidget::itemSelectionChanged, this, &Projects::onProjectSelected);
     connect(this, &QDialog::finished, [this](int result) {
         if (result == QDialog::Rejected) {
@@ -169,7 +172,8 @@ void Projects::openProject(const QString &name) {
 void Projects::printProjects() {
     ui->tableWidget->clear();
     if (m_db->openDb()) {
-        QString queryString = "SELECT name FROM projects";
+        QString queryString = QString("select projects.name from projects join user_project on projects.Id = user_project.project where user_project.user = '%1';")
+                .arg(m_db->getUserId(m_username));
         if (!m_db->executeQuery(queryString, [this](bool success, const QStringList &projectData) {
             if (success) {
                 ui->tableWidget->clearContents();
