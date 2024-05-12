@@ -19,7 +19,6 @@ Connection::Connection(Db *db, QWidget *parent) :
 }
 
 Connection::~Connection() {
-    qDebug() << "Connection::~Connection()";
     delete ui;
     delete m_db;
     close();
@@ -27,7 +26,6 @@ Connection::~Connection() {
 }
 
 void Connection::on_pb_connect_clicked() {
-    qDebug() << "Connection::on_pb_connect_clicked()";
     QString username = ui->le_login->text();
 
     if (m_db->openDb()) {
@@ -39,7 +37,6 @@ void Connection::on_pb_connect_clicked() {
                 if (!userData.isEmpty()) {
                     QString un = userData.value(1);
                     QString passwd = userData.value(2);
-                    qDebug() << "Utilisateur trouvé:" << un;
                     if (m_hash->verifyPassword(passwd, ui->le_password->text())) {
                         QMessageBox::warning(this, "Error", "Invalid password!");
                         return false;

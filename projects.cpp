@@ -35,7 +35,6 @@ void Projects::on_pushButton_new_clicked() {
 }
 
 void Projects::on_pushButton_delete_clicked() {
-    qDebug() << "Delete project: " << m_projectName_selected;
     deleteProject(m_projectName_selected);
 }
 

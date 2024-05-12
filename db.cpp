@@ -56,7 +56,6 @@ bool Db::isOpen() const {
 }
 
 int Db::getProjectId(const QString &name) {
-    qDebug() << "getProjectId" << name;
     int res = -1;
     if (openDb()) {
         QString queryString = QString("SELECT Id FROM projects WHERE name='%1'")

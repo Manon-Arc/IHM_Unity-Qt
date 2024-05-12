@@ -23,7 +23,6 @@ Register::Register(Db *db, QWidget *parent) :
 }
 
 Register::~Register() {
-    qDebug() << "Register::~Register()";
     delete ui;
     QApplication::quit();
 }
@@ -60,17 +59,12 @@ void Register::on_pb_validate_clicked() {
                     } else {
                         return true;
                     }
-                } else {
-                    // Utilisateur non trouvé dans la base de données
-                    qDebug() << "Utilisateur non trouvé";
-                    return false;
-
                 }
             } else {
                 // La requête a échoué
                 QMessageBox::warning(this, "Error", "Query execution failed!");
-                return false;
             }
+            return false;
         })) return;
 
         QString hashPassword = m_hash->hashPassword(password.toStdString().c_str());
