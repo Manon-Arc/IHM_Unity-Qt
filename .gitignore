@@ -79,5 +79,4 @@ CMakeLists.txt.user
 cmake-build-debug/
 cmake-build*/
 [Bb]uild*/
-db
 .env
