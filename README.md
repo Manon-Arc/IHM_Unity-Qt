@@ -22,12 +22,6 @@ This repository contains the QT client of the [IHM project](https://github.com/M
 
 ## 🔧 Prerequisites :
 
-- [Qt](https://www.qt.io/download) installed on your system.
-
-## 💻 How to Install the Project :
-
-### 0. Prerequisites :
-
 - [Qt6](https://www.qt.io/download) installed on your system.
 - [Git](https://git-scm.com/downloads) installed on your system.
 - [CMake](https://cmake.org/download/) installed on your system.
@@ -35,6 +29,8 @@ This repository contains the QT client of the [IHM project](https://github.com/M
     - You can follow the [Build from source](https://github.com/grpc/grpc/blob/master/BUILDING.md) for any platform (
       windows included).
 - [libsodium](https://libsodium.gitbook.io/doc/installation) installed on your system.
+
+## 💻 How to Install the Project :
 
 ### 1. Installation :
 
