@@ -55,16 +55,18 @@ This repository contains the QT client of the [IHM project](https://github.com/M
     - Edit and add the following lines in the .env file :
         ```bash
         DB_PATH=<path_to_db>
+        GRPC_IP=<IP_ADDR>:<PORT>
         ```
         - Replace <path_to_db> with the path to the database file.
         - Example :
           ```bash
           DB_PATH=/home/user/Documents/IHM_Unity-Qt/db.sqlite
+          GRPC_IP=10.33.2.5:50051
           ```
           - To build your own db file, you can use the [script_db.sql](./script_db.sql) file (WORK ONLY ON SQLITE)
     - To the db exemple, the database file is located in source folder.
       ```bash
-        DB_PATH=../db
+        DB_PATH=./db
         ```
 - Create a build folder :
     ```bash

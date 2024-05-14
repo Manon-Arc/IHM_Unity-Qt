@@ -17,11 +17,11 @@ Projects::Projects(Db *db, QString username, QWidget *parent) :
     ui->label_username->setAlignment(Qt::AlignCenter);
     ui->label_username->adjustSize();
     connect(ui->tableWidget, &QTableWidget::itemSelectionChanged, this, &Projects::onProjectSelected);
-    connect(this, &QDialog::finished, [this](int result) {
-        if (result == QDialog::Rejected) {
-            delete this;
-        }
-    });
+//    connect(this, &QDialog::finished, [this](int result) {
+//        if (result == QDialog::Rejected) {
+//            delete this;
+//        }
+//    });
     printProjects();
 }
 
@@ -155,7 +155,7 @@ void Projects::openProject(const QString &name) {
                         m_mainWindow = new MainWindow();
                     }
                     this->close();
-                    this->hide();
+//                    this->hide();
                     m_mainWindow->show();
                     return true;
                 }

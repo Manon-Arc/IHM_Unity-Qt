@@ -2,12 +2,16 @@
 #include "./ui_mainwindow.h"
 #include <memory>
 #include <QVBoxLayout>
+#include <QSettings>
 
 
 MainWindow::MainWindow(QWidget *parent)
         : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    m_grpcClient = new GrpcServiceClient(grpc::CreateChannel("192.168.1.86:50051", grpc::InsecureChannelCredentials()));
+    QSettings settings(".env", QSettings::IniFormat);
+    std::string ipa = settings.value("GRPC_IP").toString().toStdString();
+//    qDebug() << ipa;
+    m_grpcClient = new GrpcServiceClient(grpc::CreateChannel(ipa, grpc::InsecureChannelCredentials()));
 
     m_button_up = ui->Top;
     m_button_down = ui->Bottom;
